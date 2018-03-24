@@ -1,0 +1,7 @@
+{
+    "require": {
+        "delight-im/auth": "^7.5",
+        "kint-php/kint": "^2.2",
+        "filp/whoops": "^2.1"
+    }
+}
