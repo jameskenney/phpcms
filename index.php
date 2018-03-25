@@ -5,7 +5,7 @@ include "includes/db.php";
 ?>
    <main id="content" class="main-content">
 
-       <!-- Grab front page content from DB and display it  -->
+       <!-- Grab front page blog content from DB and display it  -->
 	   <?php
 	   $query = "SELECT * FROM posts";
 	   $select_all_posts_query = mysqli_query($connection,$query);
