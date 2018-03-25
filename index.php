@@ -1,7 +1,7 @@
 <?php
 //can you see this comment
 require_once( __DIR__ . "/admin/head.php" );
-include "includes/db.php"
+include "includes/db.php";
 ?>
    <main id="content" class="main-content">
 
