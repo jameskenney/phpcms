@@ -13,6 +13,7 @@
 		   $post_title = $row['post_title'];
 		   $post_date = $row['post_date'];
 		   $post_content = $row['post_content'];
+		   $post_excerpt = $row['post_excerpt'];
 
 		   ?>
            <h1>
@@ -21,7 +22,7 @@
            <p>
                Written on <?php echo $post_date; ?> by <?php echo $post_author; ?>
            </p>
-           <p><?php echo $post_content; ?></p>
+           <p><?php echo $post_excerpt; ?></p>
            <a class=""btn btn-primary" href="#">Read More<span class="glyphicon glyphicon-chevron-right"></span></a>
 	   <?php } ?>
 
