@@ -1,7 +1,6 @@
 <?php
 
 require_once( __DIR__ . "/admin/head.php" );
-include "includes/db.php";
 ?>
    <main id="content" class="main-content">
 
@@ -11,8 +10,8 @@ include "includes/db.php";
 	   $select_all_posts_query = mysqli_query($connection,$query);
 
 	   while($row = mysqli_fetch_assoc($select_all_posts_query)){
-		   $post_title = $row['post_title'];
 		   $post_author = $row['post_author'];
+		   $post_title = $row['post_title'];
 		   $post_date = $row['post_date'];
 		   $post_content = $row['post_content'];
 
