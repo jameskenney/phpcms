@@ -203,6 +203,19 @@ footer {
    text-align: left;
 }
 
+.email .form-control {
+   margin-bottom: 25px;
+}
+
+.chosen-container-multi,
+.chosen-search-input {
+   margin-bottom: 25px;
+}
+
+#roles-button {
+   margin-bottom: 25px;
+}
+
 /*!*--------------------------------------------------------------*/
 /*If no grid support, limit width to 50em and center align*/
 /*--------------------------------------------------------------*!*/
