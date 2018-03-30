@@ -1,6 +1,7 @@
 <?php
 //can you see this comment
 require_once( __DIR__ . "/admin/head.php" );
+
 ?>
    <main id="content" class="main-content">
       <h1>Determination of motivation</h1>
