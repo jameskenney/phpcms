@@ -50,7 +50,8 @@ if ( is_ssl() ) {
 
    <header class="masthead">
       <h2 class="site-title">Standard two-column layout</h2>
-	   <?php
+
+      <?php
 	   if ( $auth->isLoggedIn() ) {
 		   $email = $auth->getEmail();
 		   echo "Howdy " . $email . "<br>";

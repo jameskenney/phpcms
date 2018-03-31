@@ -7,7 +7,7 @@ $list_of_roles = \Delight\Auth\Role::getNames();
 //var_dump( $list_of_roles );
 
 $roles = json_encode ( $list_of_roles );
-var_dump( $roles );
+//var_dump( $roles );
 
 $j = 0;
 
@@ -80,6 +80,9 @@ $j = 0;
 		  }
 		  $j ++; ?>
 
+         <select class="js-multiple-roles" name="roles" multiple="multiple">
+         </select>
+
          <!-- Button -->
          <div class="">
             <label class="control-label" for="roles-button">Select Roles</label>
@@ -90,7 +93,6 @@ $j = 0;
          </div>
 
       </div> <!-- user-data -->
-
 <!--      <div class="col roll-1">-->
 <!--         <div class="checkbox">-->
 <!--            <label for="Admin"> <input type="checkbox" name="Admin" id="Admin" value="1"> Admin </label>-->
@@ -201,13 +203,13 @@ $j = 0;
 #
 #
 #
-try {
-	$auth->admin()->addRoleForUserByUsername( 'root', \Delight\Auth\Role::ADMIN );
-} catch ( \Delight\Auth\UnknownUsernameException $e ) {
-	// unknown username
-} catch ( \Delight\Auth\AmbiguousUsernameException $e ) {
-	// ambiguous username
-}
+//try {
+//	$auth->admin()->addRoleForUserByUsername( 'root', \Delight\Auth\Role::ADMIN );
+//} catch ( \Delight\Auth\UnknownUsernameException $e ) {
+//	// unknown username
+//} catch ( \Delight\Auth\AmbiguousUsernameException $e ) {
+//	// ambiguous username
+//}
 
 
 //try {
@@ -225,22 +227,22 @@ try {
 
 
 require_once( __DIR__ . "/footer.php" ); ?>
-<script>
-   ;(function ( $, window, document, undefined ) {
-      'use strict';
-
-      jQuery( document ).ready( function ( $ ) {
-         if ( $( "#Subscriber" ).is( ':checked' ) ) {
-            $( "#txtAge" ).show();
-         }// checked
-         else {
-            $( "#Translator" ).hide();
-         }  // unchecked
-      } );
-
-   })
-   ( jQuery, window, document );
-</script>
+<!--<script>-->
+<!--   ;(function ( $, window, document, undefined ) {-->
+<!--      'use strict';-->
+<!---->
+<!--      jQuery( document ).ready( function ( $ ) {-->
+<!--         if ( $( "#Subscriber" ).is( ':checked' ) ) {-->
+<!--            $( "#txtAge" ).show();-->
+<!--         }// checked-->
+<!--         else {-->
+<!--            $( "#Translator" ).hide();-->
+<!--         }  // unchecked-->
+<!--      } );-->
+<!---->
+<!--   })-->
+<!--   ( jQuery, window, document );-->
+<!--</script>-->
 
 <!--var_dump( \Delight\Auth\Role::getNames() );-->
 <!--global var $server_name = strip_tags( trim( $_SERVER[ 'SERVER_NAME' ] ) );-->
