@@ -3,12 +3,18 @@
 
    $(document).ready(function() {
       $('.js-multiple-roles').select2({
-         ajax: {
-            url: 'http://cms.local/admin/roles.php',
-            dataType: 'POST'
-            // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-         }
+         placeholder: 'Select one or more roles',
+         multiple: 'multiple',
+         //theme: "bootstrap",
+         width: '350px'
       });
+
+      $('.js-users').select2({
+         placeholder: 'Select a user',
+         width: '350px'
+      });
+      $('b[role="presentation"]').hide();
+      $('.select2-selection__arrow').append('<i class="fa fa-angle-down"></i>');
    });
 
 //   jQuery(document).ready(function( $ ) {

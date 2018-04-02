@@ -21,7 +21,7 @@ require_once( __DIR__ . "/admin/head.php" );
          <li><a href="login.php">login</a></li>
          <li><a href="admin/exit.php">logout</a></li>
          <li><a href="admin/register.php">register user</a></li>
-         <li><a href="admin/user-roles.php.orig">add/remove user roles</a></li>
+         <li><a href="admin/user-roles.php">add/remove user roles</a></li>
          <li><a href="admin/delete-users.php">delete user</a></li>
          <li><a href="admin/change-password.php">change password</a></li>
          <li><a href="admin/change-email.php">change email</a></li>
