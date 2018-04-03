@@ -35,8 +35,9 @@ if ( isset( $_POST[ 'btn-register' ] ) ) {
    <form class="signup-form-container" role="form" method="post" id="login-form" name="login-form">
 
       <div class="form-header">
-         <h3><span class="login-title"><img src="../assets/fonts/solid/user.svg" class="user"> php CMS</span>
-            <span class="login-title-right"><img src="../assets/fonts/solid/pencil-alt.svg" class="pencil-alt"></span>
+         <h3><span class="login-title"><img src="../assets/fonts/solid/user.svg" class="user"> Register User</span>
+            <span class="login-title-right">
+               <img src="../assets/fonts/solid/pencil-alt.svg" class="pencil-alt"></span>
          </h3>
 
          <div id="error">
@@ -44,7 +45,8 @@ if ( isset( $_POST[ 'btn-register' ] ) ) {
 			 if ( isset( $error ) ) {
 				 ?>
                 <div class="alert alert-danger"> exclamation-triangle
-                   <img src="../assets/fonts/solid/exclamation-triangle.svg" class="user"> &nbsp; <?php echo $error; ?> !
+                   <img src="../assets/fonts/solid/exclamation-triangle.svg"
+                        class="user"> &nbsp; <?php echo $error; ?> !
                 </div>
 				 <?php
 			 }
@@ -61,8 +63,10 @@ if ( isset( $_POST[ 'btn-register' ] ) ) {
          <div class="form-group">
             <div class="input-group input-group-relative">
                <div class="input-group-addon"><img src="../assets/fonts/solid/user.svg" class="user"></div>
-               <input name="uname_uid" type="text" id="uid" class="form-control" placeholder="User ID or Name" maxlength="40"
+               <input name="uname_uid" type="text" id="uid" class="form-control"
+                      placeholder="User ID or Name" maxlength="40"
                       autofocus="true">
+
             </div>
             <span class="help-block" id="check-e"></span>
          </div>
@@ -70,8 +74,8 @@ if ( isset( $_POST[ 'btn-register' ] ) ) {
          <div class="form-group">
             <div class="input-group input-group-relative">
                <div class="input-group-addon"><img src="../assets/fonts/solid/envelope.svg" class="user"></div>
-               <input name="uname_email" type="text" id="name" class="form-control" placeholder="Email Address" maxlength="40"
-                      autofocus="true">
+               <input name="uname_email" type="text" id="name" class="form-control"
+                      placeholder="Email Address" maxlength="40">
             </div>
             <span class="help-block" id="check-e"></span>
          </div>
@@ -80,7 +84,9 @@ if ( isset( $_POST[ 'btn-register' ] ) ) {
 
             <div class="form-group form-group-zero col-lg-6">
                <div class="input-group">
-                  <div class="input-group-addon"><img src="../assets/fonts/solid/lock.svg" class="clock"></span></div>
+                  <div class="input-group-addon"><img src="../assets/fonts/solid/lock.svg"
+                                                      class="clock"></span>
+                  </div>
                   <input name="password" id="password" type="password" class="form-control" placeholder="Password">
                </div>
                <span class="help-block" id="error"></span>
@@ -88,8 +94,11 @@ if ( isset( $_POST[ 'btn-register' ] ) ) {
 
             <div class="form-group form-group-zero col-lg-6">
                <div class="input-group">
-                  <div class="input-group-addon"><img src="../assets/fonts/solid/lock.svg" class="clock"></div>
-                  <input name="cpassword" id="cpassword" type="password" class="form-control" placeholder="Retype Password">
+                  <div class="input-group-addon">
+                     <img src="../assets/fonts/solid/lock.svg" class="clock">
+                  </div>
+                  <input name="cpassword" id="cpassword" type="password" class="form-control"
+                         placeholder="Retype Password">
                </div>
                <span class="help-block" id="error"></span>
             </div>

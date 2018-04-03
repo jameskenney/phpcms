@@ -28,7 +28,7 @@ if ( is_ssl() ) {
 <head>
    <meta charset="utf-8">
    <meta http-equiv="x-ua-compatible" content="ie=edge">
-   <title>php CMS</title>
+   <title>Site Entice</title>
    <meta name="description" content="">
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -36,26 +36,22 @@ if ( is_ssl() ) {
    <link rel="apple-touch-icon" href="icon.png">
    <!-- Place favicon.ico in the root directory -->
 
-   <!--   <link rel="stylesheet" href="css/normalize.css">-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css">
    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
    <link rel="stylesheet" href="../assets/css/bootstrap-grid.min.css">
    <link rel="stylesheet" href="../assets/css/bootstrap-reboot.min.css">
    <link rel="stylesheet" href="../assets/css/main.css">
-
 </head>
 <body>
-<!--[if lte IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
-                                                                                                                                          your
-                                                                                                                                          browser</a>
-                                            to improve your experience and security.</p><![endif]-->
+<!--[if lte IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser
+</a> to improve your experience and security.</p><![endif]-->
 <div class="wrapper">
    <div class="nav-admin">admin navigation</div>
 
-<!--   <a class="skip-link screen-reader-text" href="#content">Skip to content</a>-->
-
    <header class="masthead">
       <h2 class="site-title">Standard two-column layout</h2>
-	   <?php
+
+      <?php
 	   if ( $auth->isLoggedIn() ) {
 		   $email = $auth->getEmail();
 		   echo "Howdy " . $email . "<br>";

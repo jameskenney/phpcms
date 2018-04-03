@@ -98,159 +98,97 @@ textarea {
    ========================================================================== */
 
 body {
-   display: grid;
+   display:       grid;
    justify-items: center;
 }
 
 .wrapper {
-   display: grid;
-   grid-gap: 5px;
-   box-sizing: border-box;
-   grid-template-columns: repeat( 3, minmax( 250px, 1fr ) );
-   grid-template-areas:
-      "nav-admin nav-admin nav-admin"
-      "header header header"
-      "nav-main nav-main nav-main"
-      "main main aside"
-      "footer footer footer";
+   display:               grid;
+   grid-gap:              5px;
+   box-sizing:            border-box;
+   grid-template-columns: repeat(3, minmax(250px, 1fr));
+   grid-template-areas:   "nav-admin nav-admin nav-admin" "header header header" "nav-main nav-main nav-main" "main main aside" "footer footer footer";
 }
 
 header {
-   grid-area: header;
+   grid-area:        header;
    background-color: #8791b9;
    /*height: 10vh;*/
 }
 
 .nav-admin {
-   color: white;
-   grid-area: nav-admin;
+   color:            white;
+   grid-area:        nav-admin;
    background-color: black;
    /*height: 5vh;*/
 }
 
 main {
-   grid-area: main;
+   grid-area:        main;
    background-color: coral;
 }
 
 nav.main {
-   grid-area: nav-main;
+   grid-area:        nav-main;
    background-color: #26a599;
    /*height: 5vh;*/
 }
 
 aside {
-   grid-area: aside;
+   grid-area:        aside;
    background-color: #fff176;
 }
 
 footer {
-   color: white;
-   grid-area: footer;
+   color:            white;
+   grid-area:        footer;
    background-color: #1976d2;
-   /*height: 10vh;*/
 }
 
 .wrapper {
    max-width: 1140px !important;
 }
 
-.user-permissions {
-   align-content:         start;
-   display:               grid;
-   grid-template-columns: repeat( 3, minmax( 250px, 1fr ) );
-   grid-template-areas:   "user-data roll-1 roll-2"
-                          "    .     roll-1 roll-2"
-                          "    .     roll-1 roll-2"
-                          "    .     roll-1 roll-2"
-                          "    .     roll-1 roll-2"
-                          "    .     roll-1 roll-2"
-                          "    .     roll-1 roll-2"
-                          "    .     roll-1 roll-2"
-                          "    .     roll-1 roll-2"
-                          "    .     roll-1 roll-2"
-                          "    .     roll-1 roll-2";
-                           min-content: 100%;
-                           max-content: 100%;
-    /*flex: 1 0 100%;*/
-
-   grid-gap: 5px;
-   width: 100%;
-   max-width: 1140px !important;
-}
-
 .user-data {
-   grid-area: user-data;
-   width: 100%;
+   grid-area:        user-data;
+   width:            100%;
    background-color: #fff176;
-   padding: 10px;
-   text-align: left;
+   padding:          10px;
+   text-align:       left;
 }
 
 .roll-1 {
-   grid-area: roll-1;
-   width: 100%;
+   grid-area:        roll-1;
+   width:            100%;
    background-color: #fff176;
-   padding: 10px;
-   text-align: left;
+   padding:          10px;
+   text-align:       left;
 }
 
 .roll-2 {
-   grid-area: roll-2;
-   width: 100%;
+   grid-area:        roll-2;
+   width:            100%;
    background-color: #fff176;
-   padding: 10px;
-   text-align: left;
+   padding:          10px;
+   text-align:       left;
 }
 
-/*!*--------------------------------------------------------------*/
-/*If no grid support, limit width to 50em and center align*/
-/*--------------------------------------------------------------*!*/
-/*@supports not (display: grid) {*/
-   /*.site {*/
-      /*max-width: 50em;*/
-      /*margin: 0 auto;*/
-   /*}*/
-/*}*/
+.email .form-control {
+   margin-bottom: 25px;
+}
 
-/*!*--------------------------------------------------------------*/
-/*CSS Grid layout for wider screens, when browser supports grid:*/
-/*--------------------------------------------------------------*!*/
+.chosen-container-multi,
+.chosen-search-input {
+   margin-bottom: 25px;
+}
 
-/*@media screen and (min-width: 600px) {*/
-   /*@supports (display: grid) {*/
+#roles-button {
+   margin-bottom: 25px;
+}
 
-      /*!*.site {*!*/
-         /*!*display: grid;*!*/
-         /*!*grid-template-columns: 1fr repeat(6, minmax(auto, 10em)) 1fr;*!*/
-         /*!*grid-template-rows: minmax(1em, auto) 1fr auto minmax(1em, auto);*!*/
-      /*!*}*!*/
-
-      /*!*.masthead,*!*/
-      /*!*.colophon {*!*/
-         /*!*grid-column: span 8;*!*/
-      /*!*}*!*/
-
-      /*!*.main-content {*!*/
-         /*!*grid-column: 2/6;*!*/
-      /*!*}*!*/
-
-      /*!*.sidebar {*!*/
-         /*!*grid-column: 6/8;*!*/
-      /*!*}*!*/
-
-      /*!*.twin {*!*/
-         /*!*grid-column: 2/5;*!*/
-         /*!*grid-row: 3/4;*!*/
-      /*!*}*!*/
-
-      /*!*.twin:last-of-type {*!*/
-         /*!*grid-column: 5/8;*!*/
-      /*!*}*!*/
-
-   /*}*/
-/*}*/
-
+.select2-container .select2-selection--single {
+   height: 38px !important;
+}
 
 .form-header h3 {
    display:               grid;
@@ -261,7 +199,7 @@ footer {
 
 .form-header h3 {
    display:               grid;
-   grid-template-columns: 1fr 1fr;
+   grid-template-columns: 3fr 1fr;
    grid-template-areas:   "user pencil-alt";
    justify-content:       space-around;
 }
@@ -335,33 +273,55 @@ footer {
    position: relative;
 }
 
-.input-group-addon img {
-   /*z-index: 99;*/
-   position:         absolute;
-   height:           16px;
-   color:            #555;
-}
-
 .input-group-addon {
-   /*z-index: 99;*/
-   padding:          8px 12px 4px;
-   font-size:        16px;
-   font-weight:      normal;
-   line-height:      1;
-   color:            transparent;
-   text-align:       center;
+   z-index: 99;
+   position: absolute;
+   height:   16px;
+   color:    #555;
+   left: 12px;
+   bottom: 12px;
+   padding: 8px 12px 4px;
    background-color: #eee;
    border:           1px solid #ccc;
    border-radius:    4px;
 }
 
+.select2-selection__rendered {
+   padding-left: 50px !important;
+}
+
+.input-group-addon {
+   z-index: 101;
+   position: absolute;
+   height:   38px;
+   width:   38px;
+   color:    #555;
+   left: 0px;
+   bottom: 0px;
+   //background-size: 38px 38px;
+
+}
+
+.input-group-addon img {
+   z-index: 99;
+   /*padding:          8px 12px 4px;*/
+   font-size:        16px;
+   font-weight:      normal;
+   line-height:      1;
+   color:            transparent;
+   text-align:       center;
+   align-self:       center;
+   padding-bottom: 8px;
+}
+
 .input-group-addon::after {
-   box-sizing: border-box;
-   content:    "\e008";
+   /*box-sizing: border-box;*/
+   content:    "";//
+/*background-size: 38px 38px;*/
 }
 
 .input-group-relative .form-control {
-   padding: 7px 9px;
+   padding: 6px 9px 6px 45px;
 }
 
 audio, canvas, iframe, img, svg, video {
@@ -378,7 +338,7 @@ audio, canvas, iframe, img, svg, video {
    border-right:            1px solid #c9c9c9;
 
    display:                 block;
-   padding:                 18px 22px;
+   padding:                 8px 18px;
    position:                relative;
    border-bottom:           1px solid #ccc;
 }
@@ -405,8 +365,8 @@ audio, canvas, iframe, img, svg, video {
    border-left:                1px solid #c9c9c9;
    border-right:               1px solid #c9c9c9;
    border-bottom:              1px solid #c9c9c9;
-   padding:                    20px;
-   display: grid;
+   padding:                    15px 20px;
+   display:                    grid;
 }
 
 .form-footer .form-group {
@@ -419,22 +379,21 @@ audio, canvas, iframe, img, svg, video {
 
 .form-footer .right-col {
    justify-self: end;
-   text-align: right;
+   text-align:   right;
 }
-
 
 .form-control {
    font-size: 16px;
    height:    auto;
-   padding:   7px 9px;
+   padding:   6px 9px 6px 45px;
 }
 
+#btn-roles  img,
 #btn-signup img,
-#btn-logout img{
-   width: 20px;
+#btn-logout img {
+   width:  20px;
    height: 20px;
 }
-
 
 .form-group #error {
    color: #a94442;
@@ -460,11 +419,11 @@ div.form-group-zero {
    border:        1px solid #1997e1;
    border-radius: 5px;
    color:         #fff;
-   text-shadow: 1px 1px 2px black;
+   text-shadow:   1px 1px 2px black;
    height:        40px;
    margin:        12px 16px 0 !important;
    padding:       10px;
-   width:         100%  !important;
+   width:         100% !important;
    text-align:    center;
    font-weight:   bold;
 }
@@ -496,19 +455,15 @@ footer {
 }
 
 h3 {
-   display: grid;
+   display:       grid;
    align-content: center;
-   margin: 0;
+   margin:        0;
 }
 
 h3 .login-title {
-   font-size: 20px;
+   font-size:  20px;
    align-self: center;
 }
-
-/*h3 {*/
-   /*margin-bottom: 15px;*/
-/*}*/
 
 /* ==========================================================================
    Helper classes
@@ -687,3 +642,11 @@ h3 .login-title {
    }
 }
 
+.user-permissions .col-sm-12 {
+   padding-left:  0;
+   padding-right: 0;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+   line-height: 38px !important;
+}

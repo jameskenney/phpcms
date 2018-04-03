@@ -1,0 +1,92 @@
+<?php
+
+require_once( __DIR__ . "/head.php" );
+
+$list_of_roles = \Delight\Auth\Role::getNames();
+//var_dump( $list_of_roles );
+
+$roles = json_encode( $list_of_roles );
+d( $roles );
+
+$j = 0;
+
+?>
+<form class="form-horizontal">
+
+   <div class="user-permissions">
+      <div class="col user-data">
+		  <?php
+		  if ( $j == 0 ) {
+		  ?>
+         <!-- Text input-->
+         <div class="">
+            <label class="control-label" for="email">User Email</label>
+            <div class="email">
+               <input id="email" name="email" type="text" placeholder="user email" class="form-control input-md" required="">
+            </div>
+         </div>
+		  <?php
+
+		  // need to search for email and validate user
+		  //if ( $auth->isLoggedIn() ) {
+			//  $email = $auth->getEmail();
+			//  echo "Howdy " . $email . "<br>";
+		  //}
+		  ?>
+
+         <!--          Email address echo $email = $auth->getEmail( 'root' ) . "<br>";-->
+
+         <!--         echo $userData = $auth->getUserDataByEmailAddress('dgs@riskiii.com', $requestedColumns ) . "<br>";-->
+
+         <!--         $roles = new array();-->
+
+         <!--         d( $auth->getRoles( 16 ) );-->
+
+         <!--          Email address echo $email = $auth->getEmail( 'root' ) . "<br>";-->
+
+         <!--          Display name echo $email = $auth->getUsername() . "<br>";-->
+
+         <!--          User Id echo $id = $auth->getUserId() . "<br>";-->
+
+         <!--          ip address echo $ip = $auth->getIpAddress() . "<br>";-->
+
+         <!--         if ( $auth->isNormal() ) { echo "user is in default state" . "<br>"; }-->
+         <!---->
+         <!--         if ( $auth->isArchived() ) { echo "user has been archived" . "<br>"; }-->
+         <!---->
+         <!--         if ( $auth->isBanned() ) { echo "user has been banned" . "<br>"; }-->
+         <!---->
+         <!--         if ( $auth->isLocked() ) { echo "user has been locked" . "<br>"; }-->
+         <!---->
+         <!--         if ( $auth->isPendingReview() ) { echo "user is pending review" . "<br>"; }-->
+         }
+		  <?php
+		  if ( $auth->isSuspended() ) {
+			  echo "user has been suspended" . "<br>";
+		  } else { // ( $j == 0 ) echo " " . ""; } $j ++; ?>
+
+         <!-- Button -->
+         <div class="">
+            <label class="control-label" for="roles-button">Select Roles</label>
+            <div class="">
+               <button id="roles-button" type="submit" name="roles-button" class="btn btn-primary">Select Roles</button>
+
+            </div>
+         </div>
+
+      </div> <!-- user-data -->
+
+   </div> <!-- .user-permissions -->
+</form> <!-- form-horizontal -->
+
+<script>
+   ;(function ( $, window, document, undefined ) {
+      //'use strict';
+
+      var $server_name = location.protocol + '//' + location.host;
+      var $server = "/admin/getuserid.php=?";
+      var $server_data = 'userId='.$userId;
+
+   })
+   ( jQuery, window, document );
+</script>
