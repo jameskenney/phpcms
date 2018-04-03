@@ -4,10 +4,11 @@ require_once( __DIR__ . "/head.php" );
 
 
 $list_of_roles = \Delight\Auth\Role::getNames();
-//var_dump( $list_of_roles );
+
 
 $roles = json_encode( $list_of_roles );
 //var_dump( $roles );
+
 
 $j = 0;
 
@@ -79,11 +80,7 @@ $j = 0;
    </div>  <!-- .form-footer -->
 </form> <!-- form-horizontal -->
 
-
 <?php
 
 require_once( __DIR__ . "/footer.php" ); ?>
 
-<!--<script>--><!--   ;(function ( $, window, document, undefined ) {--><!--      //'use strict';--><!----><!--      let $server_name = location.protocol + '//' + location.host;--><!--      let $server = "/admin/getuserid.php=?";--><!--      let $server_data = 'userId='.$userId;--><!----><!--      jQuery( document ).ready( function ( $ ) {--><!----><!--         var userEmail;--><!----><!--         $( "div.email" )--><!--            .focusout( function () {--><!--               userEmail = email.value;--><!--               console.log( userEmail );--><!--            } )--><!----><!--         $.ajax( {--><!--            url:     $server_name,--><!--            data:    "/admin/getuserid.php=?",--><!--            success: function ( $server_data ) {--><!--               console.log( $server_data );--><!--            }--><!--         } );--><!--      } );--><!----><!--   })--><!--   ( jQuery, window, document );--><!--</script>-->
-
-<!--select2 select2-container select2-container--bootstrap-->

@@ -97,6 +97,3 @@ function sendMail( $selector, $token ) {
 	mail( $to, $subject, $message, $headers );
 }
 
-
-
-
