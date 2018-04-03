@@ -12,6 +12,7 @@
  * @since 1.2.0
  *
  * @param string $string What to add the trailing slash to.
+ *
  * @return string String with trailing slash added.
  */
 function trailingslashit( $string ) {
@@ -27,6 +28,7 @@ function trailingslashit( $string ) {
  * @since 2.2.0
  *
  * @param string $string What to remove the trailing slashes from.
+ *
  * @return string String without the trailing slashes.
  */
 function untrailingslashit( $string ) {
@@ -42,27 +44,28 @@ function untrailingslashit( $string ) {
  * @return bool True if SSL, otherwise false.
  */
 function is_ssl() {
-	if ( isset( $_SERVER['HTTPS'] ) ) {
-		if ( 'on' == strtolower( $_SERVER['HTTPS'] ) ) {
+	if ( isset( $_SERVER[ 'HTTPS' ] ) ) {
+		if ( 'on' == strtolower( $_SERVER[ 'HTTPS' ] ) ) {
 			return true;
 		}
 
-		if ( '1' == $_SERVER['HTTPS'] ) {
+		if ( '1' == $_SERVER[ 'HTTPS' ] ) {
 			return true;
 		}
-	} elseif ( isset($_SERVER['SERVER_PORT'] ) && ( '443' == $_SERVER['SERVER_PORT'] ) ) {
+	} elseif ( isset( $_SERVER[ 'SERVER_PORT' ] ) && ( '443' == $_SERVER[ 'SERVER_PORT' ] ) ) {
 		return true;
 	}
+
 	return false;
 }
 
 function sendMail( $selector, $token ) {
-	$uname = strip_tags( trim( $_POST[ 'uname_uid' ] ) );
-	$umail = strip_tags( trim( $_POST[ 'uname_email' ] ) );
+	$uname       = strip_tags( trim( $_POST[ 'uname_uid' ] ) );
+	$umail       = strip_tags( trim( $_POST[ 'uname_email' ] ) );
 	$server_name = strip_tags( trim( $_SERVER[ 'SERVER_NAME' ] ) );
 
-	$resetUrl  = "http://"      . $server_name . "/admin/verify_email.php?selector=";
-	$resetUrl .= \urlencode( $selector )  . '&token=';
+	$resetUrl = "http://" . $server_name . "/admin/verify_email.php?selector=";
+	$resetUrl .= \urlencode( $selector ) . '&token=';
 	$resetUrl .= \urlencode( $token );
 
 	$from    = 'From: ' . "php" . ' ' . "CMS";
@@ -74,7 +77,7 @@ function sendMail( $selector, $token ) {
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-	$message  = "<!DOCTYPE html>";
+	$message = "<!DOCTYPE html>";
 	$message .= "<html lang='en'>";
 	$message .= "<head>";
 	$message .= "   <meta charset='UTF-8'>";
@@ -93,3 +96,7 @@ function sendMail( $selector, $token ) {
 
 	mail( $to, $subject, $message, $headers );
 }
+
+
+
+
