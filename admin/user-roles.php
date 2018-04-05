@@ -11,7 +11,7 @@ $roles = json_encode( $list_of_roles );
 
 
 $j = 0;
-
+// event not selecting single select2 with jQuery
 ?>
 <form class="signup-form-container" method="post" id="roles-form" name="roles-form">
 
@@ -44,12 +44,13 @@ $j = 0;
 
       <div class="form-group">
          <div class="input-group input-group-relative">
-            <label class="control-label" for="js-user">Select email of user to change roles</label><br>
+            <label class="control-label" for="js_users">Select email of user to change roles</label><br>
             <div class="input-group-addon">
                <img src="../assets/fonts/solid/envelope.svg" alt="icon of mail" class="user">
             </div>
-            <select id="js-user" id="js-user" class="js-users style='width: 340px'">
-			    <?php require_once( __DIR__ . "/users.php" ); ?> <!-- populate users  -->
+            <select id="js_users" class="js_users style='width: 350px' ">
+               <option value="" data-select2-id=""></option>
+			      <?php require_once( __DIR__ . "/users.php" ); ?> <!-- populate users  -->
             </select>
          </div>
          <span class="help-block" id="check-u"></span>
@@ -61,8 +62,9 @@ $j = 0;
             <div class="input-group-addon">
                <img src="../assets/fonts/solid/search.svg" alt="icon of user" class="user">
             </div>
-            <select id="js-roles" id="js-roles" class="js-multiple-roles style='width: 340px' multiple='multiple'">
-				<?php require_once( __DIR__ . "/roles.php" ); ?> <!-- populate user role choices -->
+            <select id="js_roles" class="js-multiple-roles style='width: 340px' multiple='multiple'">
+               <option></option>
+				   <?php require_once( __DIR__ . "/roles.php" ); ?> <!-- populate user role choices -->
             </select>
          </div>
          <span class="help-block" id="check-s"></span>
@@ -81,6 +83,15 @@ $j = 0;
 </form> <!-- form-horizontal -->
 
 <?php
+
+try {
+	$auth->admin()->addRoleForUserById(1, \Delight\Auth\Role::DEVELOPER);
+}
+catch (\Delight\Auth\UnknownIdException $e) {
+	// unknown user ID
+}
+
+//d($auth->admin()->getRolesForUserById(1));
 
 require_once( __DIR__ . "/footer.php" ); ?>
 
