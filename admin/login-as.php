@@ -64,15 +64,6 @@ if ( isset( $_POST[ 'btn-login' ] ) ) {
 			<span class="help-block" id="error"></span>
 		</div>
 
-		<div class="form-group">
-			<div class="input-group">
-				<div class="input-group-addon"><img src="../assets/fonts/solid/lock.svg" class="clock"></div>
-				<input name="cpassword" id="cpassword" type="password" class="form-control"
-				       placeholder="Confirm Password">
-			</div>
-			<span class="help-block" id="error"></span>
-		</div>
-
 		<div class='clear_both'></div>
 		<div id='pass_meter'></div>
 
@@ -92,11 +83,6 @@ if ( isset( $_POST[ 'btn-login' ] ) ) {
 		</div>
 	</div>  <!-- .form-footer -->
 </form>
-
-
-
-
-
 
 <?php
 require_once( __DIR__ . "/footer.php" );
