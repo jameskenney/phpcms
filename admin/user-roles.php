@@ -2,13 +2,10 @@
 
 require_once( __DIR__ . "/head.php" );
 
-
 $list_of_roles = \Delight\Auth\Role::getNames();
-
 
 $roles = json_encode( $list_of_roles );
 //var_dump( $roles );
-
 
 $j = 0;
 // event not selecting single select2 with jQuery
@@ -26,8 +23,8 @@ $j = 0;
 		  <?php
 		  if ( isset( $error ) ) {
 			  ?>
-             <div class="alert alert-danger"> exclamation-triangle <img src=".
-             ./assets/fonts/solid/exclamation-triangle.svg" class="user" alt="icon
+             <div class="alert alert-danger"> exclamation-triangle
+                <img src="../assets/fonts/solid/exclamation-triangle.svg" class="user" alt="icon
               of triangle" >&nbsp; <?php echo $error; ?> !
              </div>
 			  <?php
@@ -74,7 +71,7 @@ $j = 0;
    <div class="form-footer">
       <div class="row">
          <div class="form-group left-col col-lg-6">
-            <button type="submit" name="btn-roles" class="btn btn-info" id="btn-signup">
+            <button type="button" name="btn-roles" class="btn btn-info" id="btn-roles">
                <img src="../assets/fonts/solid/sign-in.svg" alt="sign-in icon" class="sign-in"> &nbsp; Select Roles
             </button>
          </div>
@@ -84,14 +81,36 @@ $j = 0;
 
 <?php
 
-try {
-	$auth->admin()->addRoleForUserById(1, \Delight\Auth\Role::DEVELOPER);
-}
-catch (\Delight\Auth\UnknownIdException $e) {
-	// unknown user ID
-}
+d($auth->getRoles());
 
-//d($auth->admin()->getRolesForUserById(1));
+//try {
+//	$auth->admin()->logInAsUserById(16);
+//}
+//catch (\Delight\Auth\UnknownIdException $e) {
+//	d('unknown ID');
+//}
+//catch (\Delight\Auth\EmailNotVerifiedException $e) {
+//	d('email address not verified');
+//}
+//d($auth->getRoles());
+//
+//try {
+//	$auth->admin()->logInAsUserById(17);
+//}
+//catch (\Delight\Auth\UnknownIdException $e) {
+//	d('unknown ID');
+//}
+//catch (\Delight\Auth\EmailNotVerifiedException $e) {
+//	d('email address not verified');
+//}
+//d($auth->getRoles());
+
+
+
+
+
+
+//$auth->admin()->getRolesForUserById(1);
 
 require_once( __DIR__ . "/footer.php" ); ?>
 

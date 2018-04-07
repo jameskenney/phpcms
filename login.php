@@ -82,7 +82,8 @@ if ( $auth->isLoggedIn() ) {
             <div class="form-footer modal-footer">
                <div class="row">
                   <div class="form-group  left-col col-lg-6">
-                     <button type="submit" name="btn-login" class="btn btn-info" id="btn-signup" onclick="Redirect()">
+                     <button type="submit" name="btn-login" class="btn btn-info" id="btn-signup">
+<!--                        <button type="submit" name="btn-login" class="btn btn-info" id="btn-signup" onclick="Redirect()">-->
                         <img src="assets/fonts/solid/sign-in.svg" class="sign-in"> &nbsp; Login Now
                      </button>
                   </div>
