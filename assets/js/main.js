@@ -6,9 +6,6 @@
    var $jsUser;
    var $jsRole;
 
-
-
-
    // get user to work add / remove rules
    //
    $( document ).ready( function () {
@@ -16,59 +13,97 @@
       $js_user.on( "change", function ( e ) {
          var data = $( this ).val();
          if ( data === 0 ) {
-            //alert("nothing selected");
+            alert( "nothing selected" );
             return null;
          } else {
             $jsUser = data;
-            console.log( $js_user );
-            //alert( $jsUser );
 
-            // Fetch the preselected item, and add to the control
-            $.ajax({
-               type: 'GET',
-               url: '/admin/role/s/' + $jsUser
-            }).then(function (data) {
-               // create the option and append to Select2
-               var option = new Option(data.email, data.id, true, true);
-               $js_role.append(option).trigger('change');
+            // after user is selected we need the email address of the user, id will not work
+            $.ajax( {
 
-               // manually trigger the `select2:select` event
-               $js_role.trigger({
-                  type: 'select2:select',
-                  params: {
-                     data: $js_role.val()
-                  }
-               });
-            });
+               url:        "http://cms.local/admin/get-email-ajax.php", // (default: The current page)
+               type:       "GET",                                       // GET, POST
+               data:       "id=" + $jsUser,                             // PlainObject or String or Array
+               dataType:   "text",                                      // xml, json, script, or html
+               beforeSend: function ( text ) {
+                  //alert( "Before Send Alert" );
+               },
+               success:    function ( response, status, http ) {
+                  //alert( 'success' );
+                  //console.log( response );
+                  // $auth->getRoles();
+                  //$auth->admin()->getRolesForUserById($userId);
+
+                  // after user is selected we need the email address of the user, id will not work
+                  $.ajax( {
+
+                     url:        "http://cms.local/admin/get-roles-ajax.php",   // (default: The current page)
+                     type:       "GET",                                    // GET, POST
+                     data:       "id=" + $jsUser,                           // PlainObject or String or Array
+                     dataType:   "text",                                   // xml, json, script, or html
+                     beforeSend: function ( text ) {
+                        //alert( "Before Send Alert" );
+                     },
+                     success:    function ( response, status, http ) {
+                        alert( 'success' );
+                        console.log( response );
+                        // $auth->getRoles();
+                        //$auth->admin()->getRolesForUserById($userId);
+
+                     },
+                     error:      function ( http, status, error ) {
+                        //alert( "Some Error Occurred : " + error );
+                     }
+                  } );
+
+               },
+               error:      function ( http, status, error ) {
+                  //alert( "Some Error Occurred : " + error );
+               }
+            } );
          }
       } );
 
-      //================================================================
-      //save company information
+      /*
+      1 click on email <= ajax to get roles <= trigger database read to get roles
+      2 add role => update database with new role
+      3 delete role => update database to remove role
 
 
 
-   //$( document ).ready( function () {
+
+
+
+
+
+       */
+
+
+
+
+
+
+      //$( document ).ready( function () {
       $js_role.on( "select2:select", function ( e ) {
-         //if ( data === 0 ) {
-         //   //alert("nothing selected");
-         //   return null;
-         //} else {
+         if ( data === 0 ) {
+            //alert("nothing selected");
+            return null;
+         } else {
             var data = e.params.data;
             //$js_role.val(['1', '2']);
             //$js_role.trigger('change'); // Notify any JS components that the value changed
             $jsRole = data;
             //console.log( JSON.stringify($jsRole) );
-            console.log( $js_role.val() );
+            //console.log( $js_role.val() );
 
-         //alert( JSON.stringify(data) );
+            //alert( JSON.stringify(data) );
             //try {
             //$auth->admin()->addRoleForUserById($jsUser, data);
             //}
             //catch (\Delight\Auth\UnknownIdException $e) {
             //    //unknown user ID
             //}
-         //}
+         }
       } );
 
       //// Set up the Select2 control
@@ -77,7 +112,6 @@
       //      url: '/api/user'
       //   }
       //});
-
 
    } );
 

@@ -1,5 +1,9 @@
 <?php
 
+require_once( __DIR__ . '/../vendor/autoload.php' );
+require_once( __DIR__ . '/config.php' );
+
+
 /**
  * Appends a trailing slash.
  *
@@ -95,5 +99,32 @@ function sendMail( $selector, $token ) {
 	$message .= "</html>";
 
 	mail( $to, $subject, $message, $headers );
+}
+
+
+function getEmailForUserById( $id ) {
+
+	$email = "";
+	$db = new PDO( 'mysql:dbname=phpcmsDB;host=localhost;charset=utf8mb4', 'phpcmsDB', 'T)Pu.WuRE6zW8X' );
+	try {
+
+		$stmt = $db->prepare( 'SELECT id, email FROM users WHERE id = :id' );
+		$stmt->execute(  [ 'id' => $id ] );
+		$users = $stmt->fetch( );
+
+	} catch ( Error $e ) {
+		throw new DatabaseError();
+	}
+
+	if ( empty( $users ) ) {
+		throw new Exception( 'No users.' );
+	} else {
+		if ( count( $users ) > 0 ) {
+			return $users;
+		} else {
+			throw new Exception( 'No users' );
+		}
+	}
+
 }
 
