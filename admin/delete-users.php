@@ -87,7 +87,4 @@ if ( isset( $_POST[ 'btn-login' ] ) ) {
 </form>
 
 <?php
-
 require_once( __DIR__ . "/footer.php" );
-
-?>

@@ -84,6 +84,14 @@ if ( isset( $_POST[ 'btn-login' ] ) ) {
 	</div>  <!-- .form-footer -->
 </form>
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> 3b4431fd2e2f6bbfca65c81f5cc98efa680b1f0d
 <?php
 require_once( __DIR__ . "/footer.php" );
 
