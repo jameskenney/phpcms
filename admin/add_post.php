@@ -9,22 +9,7 @@
 <?php
 require_once( __DIR__ . '/../vendor/autoload.php' );
 
-
-
-
-$db = new \PDO('mysql:dbname=phpcmsDB;host=localhost;charset=utf8mb4', 'phpcmsDB', 'T)Pu.WuRE6zW8X');
-$auth = new \Delight\Auth\Auth($db);
-$whoops = new \Whoops\Run;
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-$whoops->register();
-
-$connection = mysqli_connect('localhost', 'root', 'root', 'phpcmsDB');
-
-if ($connection){
-	echo "Connected to phpcmsDB";
-} else {
-	echo "You're not connected to phpcmsDB.";
-}
+require ('config.php');
 
 if(isset($_POST['create_post'])) {
 

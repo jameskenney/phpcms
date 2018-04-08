@@ -85,6 +85,7 @@ if ( is_ssl() ) {
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="post.php">Posts</a>
 						<a class="dropdown-item" href="categories.php">Categories</a>
+                        <a class="dropdown-item" href="../admin/post.php?source=add_post">Add post</a>
 					</div>
 				</li>
 			</ul>

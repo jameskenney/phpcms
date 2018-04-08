@@ -38,11 +38,11 @@ if ( is_ssl() ) {
 
 <!--   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />-->
 <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css">-->
-   <link rel="stylesheet" href="/assets/select2/dist/css/select2.min.css">
-   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-   <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
-   <link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css">
-   <link rel="stylesheet" href="/assets/css/main.css">
+   <link rel="stylesheet" href="../assets/select2/dist/css/select2.min.css">
+   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="../assets/css/bootstrap-grid.min.css">
+   <link rel="stylesheet" href="../assets/css/bootstrap-reboot.min.css">
+   <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 <!--[if lte IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser </a> to improve your experience and security.</p><![endif]-->
@@ -88,7 +88,8 @@ if ( is_ssl() ) {
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/admin/post.php">Posts</a>
-                        <a class="dropdown-item" href="categories.php">Categories</a>
+                        <a class="dropdown-item" href="/categories.php">Categories</a>
+                        <a class="dropdown-item" href="../admin/post.php?source=add_post">Add post</a>
                     </div>
                 </li>
             </ul>
