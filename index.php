@@ -22,7 +22,7 @@
                Written on <?php echo $post_date; ?> by <?php echo $post_author; ?>
            </p>
            <p><?php echo $post_excerpt; ?></p>
-           <a class="btn btn-primary" href="#">Read More<span class="glyphicon glyphicon-chevron-right"></span></a>
+           <a class="btn btn-entice" href="#">Read More<span class="glyphicon glyphicon-chevron-right"></span></a>
 
 	   <?php } ?>
 

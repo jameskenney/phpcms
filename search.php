@@ -22,7 +22,7 @@ require_once( __DIR__ . "/admin/head.php" );
 		   $count = mysqli_num_rows($search_query);
 
 		   if($count == 0) {
-			   echo "<h1> No Result</h1>";
+			   echo "<h1> No Results </h1>";
 
 		   } else {
 

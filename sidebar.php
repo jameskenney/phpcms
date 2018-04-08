@@ -9,23 +9,6 @@
 <aside class="sidebar">
     <h3>The Sidebar</h3>
     <p>The sidebar typically contains things like a menu:</p>
-
-    <!-- Blog Search Well - Sends user to search.php after search -->
-    <div class="well">
-        <h4>Blog Search</h4>
-        <form action="search.php" method="post">
-        <div class="input-group">
-            <input name="search" type="text" class="form-control">
-            <span class="input-group-btn">
-
-			<button name="submit" class="btn btn-default" type="submit" style="height:57px;">
-                <p>Submit</p>
-				<span class="glyphicon glyphicon-search"></span>
-			</button>
-		</span>
-        </div>
-        </form> <!-- /Search Form -->
-    </div>
     <ul>
        <li><a href="/">home</a></li>
        <li><a href="/login.php">login</a></li>
