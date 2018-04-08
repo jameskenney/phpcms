@@ -48,11 +48,6 @@ if ( is_ssl() ) {
 <!--[if lte IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser </a> to improve your experience and security.</p><![endif]-->
 <div class="wrapper">
 <!--   <div class="nav-container">-->
-
-
-
-
-
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">Admin Nav Bar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,8 +73,6 @@ if ( is_ssl() ) {
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/change-email.php">Change Email</a>
                 </li>
-
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Users
@@ -94,7 +87,7 @@ if ( is_ssl() ) {
             <!-- Blog Search Well - Sends user to search.php after search -->
             <form class="form-inline mt-2 mt-md-0"  action="search.php" method="post">
                 <input  name="search" type="text" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" name="submit" type="submit">Search</button>
+                <button class="btn btn-outline-entice my-2 my-sm-0" name="submit" type="submit">Search</button>
             </form> <!-- /Search Form -->
         </div>
     </nav>
