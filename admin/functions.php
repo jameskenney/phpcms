@@ -3,6 +3,15 @@
 require_once( __DIR__ . '/../vendor/autoload.php' );
 require_once( __DIR__ . '/config.php' );
 
+function confirmQuery($result) {
+
+	global $connection;
+
+	if(!$result) {
+		die("QUERY FAILED ." . mysqli_error($connection));
+	}
+
+}
 
 /**
  * Appends a trailing slash.
