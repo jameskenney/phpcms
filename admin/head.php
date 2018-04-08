@@ -48,19 +48,56 @@ if ( is_ssl() ) {
 <!--[if lte IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser </a> to improve your experience and security.</p><![endif]-->
 <div class="wrapper">
 <!--   <div class="nav-container">-->
-      <div class="nav-admin">
-         <div class="nav-menu">
-            <div><a href="/">home</a></div>
-            <div><a href="/login.php">login</a></div>
-            <div><a href="/admin/exit.php">logout</a></div>
-            <div><a href="/admin/register.php">register user</a></div>
-            <div><a href="/admin/user-roles.php">add/remove user roles</a></div>
-            <div><a href="/admin/delete-users.php">delete user</a></div>
-            <div><a href="/admin/change-password.php">change password</a></div>
-            <div><a href="/admin/change-email.php">change email</a></div>
-            <div><a href="/admin/login-as.php">login as</a></div>
-         </div>
-      </div>
+
+
+
+
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Admin Nav Bar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login.php">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/exit.php">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/login-as.php">Login as</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/change-password.php">Change password</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/change-email.php">Change Email</a>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Users
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/admin/register.php">Register User</a>
+                        <a class="dropdown-item" href="/admin/user-roles.php">Add/Remove User Roles</a>
+                        <a class="dropdown-item" href="/admin/delete-users.php">elete User</a>
+                    </div>
+                </li>
+            </ul>
+            <!-- Blog Search Well - Sends user to search.php after search -->
+            <form class="form-inline mt-2 mt-md-0"  action="search.php" method="post">
+                <input  name="search" type="text" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" name="submit" type="submit">Search</button>
+            </form> <!-- /Search Form -->
+        </div>
+    </nav>
 <!--   </div>-->
    <header class="masthead">
       <h2 class="site-title">Standard two-column layout</h2>
