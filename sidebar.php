@@ -9,15 +9,26 @@
 <aside class="sidebar">
     <h3>The Sidebar</h3>
     <p>The sidebar typically contains things like a menu:</p>
-    <ul>
-       <li><a href="/">home</a></li>
-       <li><a href="/login.php">login</a></li>
-        <li><a href="/admin/exit.php">logout</a></li>
-        <li><a href="/admin/register.php">register user</a></li>
-        <li><a href="/admin/user-roles.php">add/remove user roles</a></li>
-        <li><a href="/admin/delete-users.php">delete user</a></li>
-        <li><a href="/admin/change-password.php">change password</a></li>
-        <li><a href="/admin/change-email.php">change email</a></li>
-        <li><a href="/admin/login-as.php">login as</a></li>
-    </ul>
+    <!-- Grab categories from DB and display it  -->
+	<?php
+	$query = "SELECT * FROM categories";
+	$select_categories_sidebar = mysqli_query($connection,$query);
+	?>
+    <h4>Blog Categories</h4>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="list-unstyled">
+
+				<?php
+
+				while($row = mysqli_fetch_assoc($select_categories_sidebar )) {
+
+					$cat_title = $row['cat_title'];
+					$cat_id = $row['cat_id'];
+
+					echo "<li><a href='category.php?category=$cat_id'>{$cat_title}</a></li>";
+
+				}
+				?>
+
 </aside>

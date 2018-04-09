@@ -37,18 +37,17 @@ if ( is_ssl() ) {
 
 <!--   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />-->
 <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css">-->
-   <link rel="stylesheet" href="/assets/select2/dist/css/select2.min.css">
-   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-   <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
-   <link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css">
-   <link rel="stylesheet" href="/assets/css/main.css">
+   <link rel="stylesheet" href="../assets/select2/dist/css/select2.min.css">
+   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="../assets/css/bootstrap-grid.min.css">
+   <link rel="stylesheet" href="../assets/css/bootstrap-reboot.min.css">
+   <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 <!--[if lte IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser </a> to improve your experience and security.</p><![endif]-->
 <div class="wrapper">
-<!--   <div class="nav-container">-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Admin Nav Bar</a>
+        <a class="navbar-brand" href="../index.php">Admin Nav Bar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -64,22 +63,33 @@ if ( is_ssl() ) {
                     <a class="nav-link" href="/admin/exit.php">Logout</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/login-as.php">Login as</a>
+                    <a class="nav-link" href="/admin/login-as.php">Login As</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/change-password.php">Change password</a>
+                    <a class="nav-link" href="/admin/change-password.php">Change Password</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/change-email.php">Change Email</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Users
+                        Admin
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/admin/register.php">Register User</a>
                         <a class="dropdown-item" href="/admin/user-roles.php">Add/Remove User Roles</a>
-                        <a class="dropdown-item" href="/admin/delete-users.php">elete User</a>
+                        <a class="dropdown-item" href="/admin/delete-users.php">Delete User</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Posts
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/admin/posts.php">Posts</a>
+                        <a class="dropdown-item" href="/admin/categories.php">Categories</a>
+                        <a class="dropdown-item" href="../admin/posts.php?source=add_post">Add post</a>
+                        <a class="dropdown-item" href="../admin/categories.">Edit Categories</a>
                     </div>
                 </li>
             </ul>
@@ -92,14 +102,10 @@ if ( is_ssl() ) {
     </nav>
 <!--   </div>-->
    <header class="masthead">
-      <h2 class="site-title">Standard two-column layout</h2>
-
 	   <?php
 	   if ( $auth->isLoggedIn() ) {
 		   $email = $auth->getEmail();
 		   echo "Howdy " . $email . "<br>";
 	   }
 	   ?>
-
    </header>
-   <nav class="main">main navigation</nav>
