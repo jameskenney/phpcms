@@ -35,7 +35,7 @@ function getUsers() {
 	global $usersJson;
 
 	$list_of_users = getUserList();
-	var_dump( $list_of_users );
+	//var_dump( $list_of_users );
 	$usersJson = '';
 
 	for ( $k = 0; $k < count( $list_of_users ); $k ++ ) {
@@ -46,4 +46,6 @@ function getUsers() {
 	echo( $usersJson );
 }
 
+
 getUsers();
+

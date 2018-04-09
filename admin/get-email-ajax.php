@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="/assets/select2/dist/css/select2.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="/assets/select2/dist/js/select2.full.min.js"></script>
 <?php
 require_once( 'config.php' );
 require_once( 'functions.php' );
@@ -20,4 +17,6 @@ $email = getEmailForUserById( $id );
 //var_dump( $email );
 echo $email['email'];
 //echo 'danny';
+//require_once( __DIR__ . "/roles.php" ); // <!-- populate user role choices -->
+
 

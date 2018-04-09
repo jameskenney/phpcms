@@ -10,7 +10,7 @@ $roles = json_encode( $list_of_roles );
 $j = 0;
 // event not selecting single select2 with jQuery
 ?>
-<form class="signup-form-container" method="post" id="roles-form" name="roles-form">
+<form class="signup-form-container" method="get" id="roles-form" name="roles-form">
 
    <div class="form-header">
       <h3><span class="login-title"><img src="../assets/fonts/solid/user.svg" alt="icon of user"
@@ -49,6 +49,7 @@ $j = 0;
                <option value="" data-select2-id=""></option>
 			      <?php require_once( __DIR__ . "/users.php" ); ?> <!-- populate users  -->
             </select>
+
          </div>
          <span class="help-block" id="check-u"></span>
       </div>
@@ -60,9 +61,9 @@ $j = 0;
                <img src="../assets/fonts/solid/search.svg" alt="icon of user" class="user">
             </div>
             <select id="js_roles" class="js-multiple-roles style='width: 340px' multiple='multiple'">
-               <option></option>
-				   <?php require_once( __DIR__ . "/roles.php" ); ?> <!-- populate user role choices -->
+               <?php require_once( __DIR__ . "/roles.php" ); ?><!-- <!-- populate user role choices -->
             </select>
+            <div id="dgs"></div>
          </div>
          <span class="help-block" id="check-s"></span>
       </div>
@@ -81,7 +82,9 @@ $j = 0;
 
 <?php
 
-d($auth->getRoles());
+//d(require_once( __DIR__ . "/get-roles-ajax.php" )) ; // <!-- populate user role choices -->
+
+//d($auth->getRoles());
 
 //try {
 //	$auth->admin()->logInAsUserById(16);

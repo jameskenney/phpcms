@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f87820ac33b14447e8ba0f2428051b6c",
+    "content-hash": "ab998a4e88dde00f33adc887e75102dc",
     "packages": [
         {
             "name": "delight-im/auth",
-            "version": "v7.5.1",
+            "version": "v8.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/delight-im/PHP-Auth.git",
-                "reference": "e7e174b05d63e6e62fdd8f70a8824c9a2ff4363c"
+                "reference": "50c284fff72f84ced73998749eeb9687c659f76e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/delight-im/PHP-Auth/zipball/e7e174b05d63e6e62fdd8f70a8824c9a2ff4363c",
-                "reference": "e7e174b05d63e6e62fdd8f70a8824c9a2ff4363c",
+                "url": "https://api.github.com/repos/delight-im/PHP-Auth/zipball/50c284fff72f84ced73998749eeb9687c659f76e",
+                "reference": "50c284fff72f84ced73998749eeb9687c659f76e",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,7 @@
                 "login",
                 "security"
             ],
-            "time": "2018-03-12T21:29:56+00:00"
+            "time": "2018-03-25T03:34:37+00:00"
         },
         {
             "name": "delight-im/base64",

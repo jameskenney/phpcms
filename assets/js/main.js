@@ -9,61 +9,51 @@
    // get user to work add / remove rules
    //
    $( document ).ready( function () {
-      $js_user.select2();
-      $js_user.on( "change", function ( e ) {
-         var data = $( this ).val();
-         if ( data === 0 ) {
-            alert( "nothing selected" );
-            return null;
-         } else {
-            $jsUser = data;
 
-            // after user is selected we need the email address of the user, id will not work
-            $.ajax( {
+      function $getUserID() {
 
-               url:        "http://cms.local/admin/get-email-ajax.php", // (default: The current page)
-               type:       "GET",                                       // GET, POST
-               data:       "id=" + $jsUser,                             // PlainObject or String or Array
-               dataType:   "text",                                      // xml, json, script, or html
-               beforeSend: function ( text ) {
-                  //alert( "Before Send Alert" );
-               },
-               success:    function ( response, status, http ) {
-                  //alert( 'success' );
-                  //console.log( response );
-                  // $auth->getRoles();
-                  //$auth->admin()->getRolesForUserById($userId);
+         $js_user.select2();
+         $js_user.on( "change", function ( e ) {
+            var data = $( this ).val();
+            if ( data === 0 ) {
+               alert( "nothing selected" );
+               return null;
+            } else {
+               $jsUser = data;
 
-                  // after user is selected we need the email address of the user, id will not work
-                  $.ajax( {
+               // after user is selected we need the email address of the user, id will not work
+               $.ajax( {
 
-                     url:        "http://cms.local/admin/get-roles-ajax.php",   // (default: The current page)
-                     type:       "GET",                                    // GET, POST
-                     data:       "id=" + $jsUser,                           // PlainObject or String or Array
-                     dataType:   "text",                                   // xml, json, script, or html
-                     beforeSend: function ( text ) {
-                        //alert( "Before Send Alert" );
-                     },
-                     success:    function ( response, status, http ) {
-                        alert( 'success' );
-                        console.log( response );
-                        // $auth->getRoles();
-                        //$auth->admin()->getRolesForUserById($userId);
+                  url:      "http://cms.local/admin/get-email-ajax.php", // (default: The current page)
+                  type:     "GET",                                       // GET, POST
+                  data:     "id=" + $jsUser,                             // PlainObject or String or Array
+                  dataType: "text",                                      // xml, json, script, or html
 
-                     },
-                     error:      function ( http, status, error ) {
-                        //alert( "Some Error Occurred : " + error );
-                     }
-                  } );
+                  success: function ( response, status, http ) {
+                     console.log( response );
 
-               },
-               error:      function ( http, status, error ) {
-                  //alert( "Some Error Occurred : " + error );
-               }
-            } );
-         }
-      } );
+                  },
+                  error:   function ( http, status, error ) {
+                     alert( "Some Error Occurred : " + error );
+                  }
 
+               } );
+               console.log( response );
+
+            }
+
+            var url = "http://cms.local/admin/get-roles-ajax.php?id=" + $jsUser;
+            //var url = "http://cms.local/admin/user-roles.php";
+            $.get( url, function ( data ) {
+               console.log( 'danny' );
+               console.log( data );
+               $( '#dgs' ).html( data );
+            } )
+
+         } )
+      }
+
+//} );
       /*
       1 click on email <= ajax to get roles <= trigger database read to get roles
       2 add role => update database with new role
@@ -77,11 +67,6 @@
 
 
        */
-
-
-
-
-
 
       //$( document ).ready( function () {
       $js_role.on( "select2:select", function ( e ) {
