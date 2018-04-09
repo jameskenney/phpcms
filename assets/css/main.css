@@ -736,3 +736,8 @@ h3 .login-title {
 .show > .btn-entice.dropdown-toggle:focus {
    box-shadow: 0 0 0 0.2rem rgba(38, 161, 149, 0.5);
 }
+
+.form-control:focus {
+   border-color: #26A195;
+   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(38, 161, 149, 0.6);
+}

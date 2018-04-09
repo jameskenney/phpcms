@@ -83,6 +83,7 @@ if(isset($_POST['update_post'])) {
 ?>
 
 <div class="container">
+    <h1>Editing <?php echo $post_title ?></h1>
     <div class="large-12 columns">
         <form action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
