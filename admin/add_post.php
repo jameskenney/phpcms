@@ -40,7 +40,10 @@ if(isset($_POST['create_post'])) {
 }
 
 ?>
-
+</div>
+</div>
+<div class="row fullWidth">
+    <div class="large-12 columns">
 <form action="" method="post" enctype="multipart/form-data">
 
 	<div class="form-group">
@@ -88,3 +91,5 @@ if(isset($_POST['create_post'])) {
 	</div>
 
 </form>
+    </div>
+</div>

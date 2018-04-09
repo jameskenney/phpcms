@@ -22,22 +22,15 @@
 	            include "add_post.php";
 	            break;
 
-	        case '100';
-		        echo "Nice 100";
+	        case 'edit_post';
+		        include "edit_post.php";
 		        break;
 
-	        case '200';
-		        echo "Nice 200";
-		        break;
-
-            default:
-
-                include "view_all_posts.php";
+            default: include "view_all_posts.php";
         }
-
     ?>
 
 
-<?php error_reporting(E_ALL); ?>
+
 
 
