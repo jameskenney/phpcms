@@ -6,7 +6,7 @@
  * Time: 10:57 PM
  */
 ?>
-<?php include( 'head_admin.php' ) ?>
+<?php include( 'head.php' ) ?>
 <?php require_once( 'config.php' ); ?>
 
     <?php

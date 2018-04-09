@@ -10,16 +10,25 @@
     <h3>The Sidebar</h3>
     <p>The sidebar typically contains things like a menu:</p>
     <!-- Grab categories from DB and display it  -->
-    <h4>Blog Categories</h4>
 	<?php
-	$query                  = "SELECT cat_title FROM categories";
-	$select_all_categories_query = mysqli_query( $connection, $query );
+	$query = "SELECT * FROM categories";
+	$select_categories_sidebar = mysqli_query($connection,$query);
+	?>
+    <h4>Blog Categories</h4>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="list-unstyled">
 
-	while($row = mysqli_fetch_assoc($select_all_categories_query)){
-		$post_category = $row['cat_title'];
-		?>
-        <ul>
-            <li><a href="#"><?php echo $post_category; ?></a></li>
-        </ul>
-	<?php } ?>
+				<?php
+
+				while($row = mysqli_fetch_assoc($select_categories_sidebar )) {
+
+					$cat_title = $row['cat_title'];
+					$cat_id = $row['cat_id'];
+
+					echo "<li><a href='category.php?category=$cat_id'>{$cat_title}</a></li>";
+
+				}
+				?>
+
 </aside>

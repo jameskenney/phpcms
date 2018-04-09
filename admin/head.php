@@ -48,7 +48,7 @@ if ( is_ssl() ) {
 <!--[if lte IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser </a> to improve your experience and security.</p><![endif]-->
 <div class="wrapper">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Admin Nav Bar</a>
+        <a class="navbar-brand" href="../index.php">Admin Nav Bar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -90,7 +90,7 @@ if ( is_ssl() ) {
                         <a class="dropdown-item" href="/admin/posts.php">Posts</a>
                         <a class="dropdown-item" href="/admin/categories.php">Categories</a>
                         <a class="dropdown-item" href="../admin/posts.php?source=add_post">Add post</a>
-                        <a class="dropdown-item" href="../admin/categories.php">Edit Categories</a>
+                        <a class="dropdown-item" href="../admin/categories.">Edit Categories</a>
                     </div>
                 </li>
             </ul>
@@ -103,14 +103,10 @@ if ( is_ssl() ) {
     </nav>
 <!--   </div>-->
    <header class="masthead">
-      <h2 class="site-title">Standard two-column layout</h2>
-
 	   <?php
 	   if ( $auth->isLoggedIn() ) {
 		   $email = $auth->getEmail();
 		   echo "Howdy " . $email . "<br>";
 	   }
 	   ?>
-
    </header>
-   <nav class="main">main navigation</nav>
