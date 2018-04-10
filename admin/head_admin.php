@@ -91,7 +91,7 @@ if ( is_ssl() ) {
                 </li>
             </ul>
             <!-- Blog Search Well - Sends user to search.php after search -->
-            <form class="form-inline mt-2 mt-md-0"  action="search.php" method="post">
+            <form class="form-inline mt-2 mt-md-0"  action="../search.php" method="post">
                 <input  name="search" type="text" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-entice my-2 my-sm-0" name="submit" type="submit">Search</button>
             </form> <!-- /Search Form -->
