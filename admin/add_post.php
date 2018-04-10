@@ -25,7 +25,6 @@ if(isset($_POST['create_post'])) {
 	$post_content = $_POST['post_content'];
 	$post_date    = date( 'd-m-y' );
 	$post_comment_count = 4;
-	$post_excerpt = $_POST['post_excerpt'];
 
 	move_uploaded_file( $post_image_temp, "../assets/images/$post_image" );
 
@@ -100,11 +99,6 @@ if(isset($_POST['create_post'])) {
             </div>
 
             <div class="form-group">
-                <label for="post_excerpt">Post Excerpt</label>
-                <textarea class="form-control" name="post_excerpt" id="" cols="30" rows="10" type="text" class="form-control" ></textarea>
-            </div>
-
-            <div class="form-group">
                 <input class="btn btn-entice" type="submit" name="create_post" value="Publish Post">
             </div>
 
@@ -112,6 +106,3 @@ if(isset($_POST['create_post'])) {
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
