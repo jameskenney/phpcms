@@ -1,14 +1,13 @@
 <?php
 
-require_once( __DIR__ . '/../vendor/autoload.php' );
-require_once( __DIR__ . '/config.php' );
+require_once( __DIR__ . '/../bootstrap.php' );
 
-function confirmQuery($result) {
+function confirmQuery( $result ) {
 
 	global $connection;
 
-	if(!$result) {
-		die("QUERY FAILED ." . mysqli_error($connection));
+	if ( ! $result ) {
+		die( "QUERY FAILED ." . mysqli_error( $connection ) );
 	}
 
 }
@@ -72,6 +71,30 @@ function is_ssl() {
 	return false;
 }
 
+/**
+ * Determines if SSL is used.
+ *
+ * @since 2.6.0
+ * @since 4.6.0 Moved from functions.php to load.php.
+ *
+ * @return bool True if SSL, otherwise false.
+ */
+function base_uri() {
+	if ( isset( $_SERVER[ 'HTTPS' ] ) ) {
+		if ( 'on' == strtolower( $_SERVER[ 'HTTPS' ] ) ) {
+			return "https://";
+		}
+
+		if ( '1' == $_SERVER[ 'HTTPS' ] ) {
+			return "https://";
+		}
+	} elseif ( isset( $_SERVER[ 'SERVER_PORT' ] ) && ( '443' == $_SERVER[ 'SERVER_PORT' ] ) ) {
+		return "https://";
+	}
+
+	return "http://";
+}
+
 function sendMail( $selector, $token ) {
 	$uname       = strip_tags( trim( $_POST[ 'uname_uid' ] ) );
 	$umail       = strip_tags( trim( $_POST[ 'uname_email' ] ) );
@@ -114,12 +137,12 @@ function sendMail( $selector, $token ) {
 function getEmailForUserById( $id ) {
 
 	$email = "";
-	$db = new PDO( 'mysql:dbname=phpcmsDB;host=localhost;charset=utf8mb4', 'phpcmsDB', 'T)Pu.WuRE6zW8X' );
+	$db    = new PDO( 'mysql:dbname=phpcmsDB;host=localhost;charset=utf8mb4', 'phpcmsDB', 'T)Pu.WuRE6zW8X' );
 	try {
 
 		$stmt = $db->prepare( 'SELECT id, email FROM users WHERE id = :id' );
-		$stmt->execute(  [ 'id' => $id ] );
-		$users = $stmt->fetch( );
+		$stmt->execute( [ 'id' => $id ] );
+		$users = $stmt->fetch();
 
 	} catch ( Error $e ) {
 		throw new DatabaseError();
@@ -138,42 +161,38 @@ function getEmailForUserById( $id ) {
 }
 
 
-function insert_categories(){
+function insert_categories() {
 
 	global $connection;
 
-	if(isset($_POST['submit'])){
+	if ( isset( $_POST[ 'submit' ] ) ) {
 
-		$cat_title = $_POST['cat_title'];
+		$cat_title = $_POST[ 'cat_title' ];
 
-		if($cat_title == "" || empty($cat_title)) {
+		if ( $cat_title == "" || empty( $cat_title ) ) {
 
 			echo "This Field should not be empty";
 
 		} else {
 
 
+			$stmt = mysqli_prepare( $connection, "INSERT INTO categories(cat_title) VALUES(?) " );
+
+			mysqli_stmt_bind_param( $stmt, 's', $cat_title );
+
+			mysqli_stmt_execute( $stmt );
 
 
-
-			$stmt = mysqli_prepare($connection, "INSERT INTO categories(cat_title) VALUES(?) ");
-
-			mysqli_stmt_bind_param($stmt, 's', $cat_title);
-
-			mysqli_stmt_execute($stmt);
-
-
-			if(!$stmt) {
-				die('QUERY FAILED'. mysqli_error($connection));
+			if ( ! $stmt ) {
+				die( 'QUERY FAILED' . mysqli_error( $connection ) );
 
 			}
-
 
 
 		}
 
 
-		mysqli_stmt_close($stmt);
+		mysqli_stmt_close( $stmt );
 
 
 	}
@@ -184,12 +203,12 @@ function insert_categories(){
 function findAllCategories() {
 	global $connection;
 
-	$query = "SELECT * FROM categories";
-	$select_categories = mysqli_query($connection,$query);
+	$query             = "SELECT * FROM categories";
+	$select_categories = mysqli_query( $connection, $query );
 
-	while($row = mysqli_fetch_assoc($select_categories)) {
-		$cat_id = $row['cat_id'];
-		$cat_title = $row['cat_title'];
+	while ( $row = mysqli_fetch_assoc( $select_categories ) ) {
+		$cat_id    = $row[ 'cat_id' ];
+		$cat_title = $row[ 'cat_title' ];
 		echo "<tr>";
 		echo "<td>{$cat_id}</td>";
 		echo "<td>{$cat_title}</td>";
@@ -199,15 +218,42 @@ function findAllCategories() {
 	}
 }
 
-function deleteCategories(){
+function deleteCategories() {
 	global $connection;
 
-	if(isset($_GET['delete'])){
-		$the_cat_id = $_GET['delete'];
-		$query = "DELETE FROM categories WHERE cat_id = {$the_cat_id} ";
-		$delete_query = mysqli_query($connection,$query);
+	if ( isset( $_GET[ 'delete' ] ) ) {
+		$the_cat_id   = $_GET[ 'delete' ];
+		$query        = "DELETE FROM categories WHERE cat_id = {$the_cat_id} ";
+		$delete_query = mysqli_query( $connection, $query );
 //		header("Location: categories.php");
 
 	}
 }
 
+function redirect( $url ) {
+	$baseUri = base_uri();
+
+	if ( headers_sent() ) {
+		$string = '<script type="text/javascript">';
+		$string .= 'window.location = "' . $baseUri . $url . '"';
+		$string .= '</script>';
+
+		echo $string;
+	} else {
+		if ( isset( $_SERVER[ 'HTTP_REFERER' ] ) AND ( $url == $_SERVER[ 'HTTP_REFERER' ] ) ) {
+			header( 'Location: ' . $_SERVER[ 'HTTP_REFERER' ] );
+		} else {
+			header( 'Location: ' . $baseUri . $url );
+		}
+
+	}
+	exit;
+}
+
+function debug_to_console( $data ) {
+	$output = $data;
+	if ( is_array( $output ) )
+		$output = implode( ',', $output);
+
+	echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+}

@@ -1,30 +1,30 @@
 <?php
 
-require_once( __DIR__ . '/../vendor/autoload.php' );
-require_once( __DIR__ . '/config.php' );
+require_once( __DIR__ . '/../bootstrap.php' );
 require_once( __DIR__ . '/functions.php' );
 
+if ( isset( $_REQUEST ) ) {
+	//debug_to_console( $_REQUEST );
+	$id = $_GET[ 'id' ];
+	//debug_to_console( $id );
+} else {
+	debug_to_console( 'danny' );
+}
 
-//var $rolesJson;
-
-
-$db = new \PDO( 'mysql:dbname=phpcmsDB;host=localhost;charset=utf8mb4', 'phpcmsDB', 'T)Pu.WuRE6zW8X' );
-
-function buildRoles() {
+function buildRoles( \Delight\Auth\Auth $auth, $id ) {
 	$list_of_roles = \Delight\Auth\Role::getNames();
 
-	//global $rolesJson;
-	global $auth;
 	$rolesJson = '';
-
-	//$roles = [];
-	//$roles = $this->admin()->getRolesForUserById( $rolesJson );
 
 	for ( $k = 0; $k < count( $list_of_roles ); $k ++ ) {
 
-		$theRole = $auth->admin()->getRolesForUserById( $k );
+		$theRole = $auth->admin()->getRolesForUserById( $id );
+		//debug_to_console( $theRole );
+		//debug_to_console( $list_of_roles[ $k ] );
+		//d( $theRole );
+		//exit;
 
-		if ( $theRole != null ) {
+		if ( in_array( $list_of_roles[ $k ], $theRole ) === true ) {
 			$rolesJson .= "    <option selected='selected' value=$k >" . $list_of_roles[ $k ] . "</option>";
 
 		} else {
@@ -32,18 +32,16 @@ function buildRoles() {
 		}
 	}
 
-
-
-	//echo( $rolesJson );
+	echo( $rolesJson );
 	//$( 'js_roles' ).load('user-roles.php');
-	//return( $rolesJson );
+	return( $rolesJson );
 }
 
-$id = buildRoles();
+buildRoles( $auth, $id );
 
-$roles = [];
-$roles = $auth->admin()->getRolesForUserById( $id );
-
-foreach ( $roles as $key => $value ) {
-	echo( "    <option value=$key selected='selected'>" . $value . "</option>" );
-}
+//$roles = [];
+//$roles = $auth->admin()->getRolesForUserById( $id );
+//
+//foreach ( $roles as $key => $value ) {
+//	echo( "    <option value=$key selected='selected'>" . $value . "</option>" );
+//}

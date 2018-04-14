@@ -1,27 +1,27 @@
 <?php
+ob_start();
 
 require_once( __DIR__ . "/admin/head.php" );
 
-
 if ( isset( $_POST[ 'btn-login' ] ) ) {
-	$uname = strip_tags( trim( $_POST[ 'uname_email' ] ) );
+	$uname = strip_tags( trim( $_POST[ 'uname_name' ] ) );
 	$umail = strip_tags( trim( $_POST[ 'uname_email' ] ) );
 	$upass = strip_tags( trim( $_POST[ 'password' ] ) );
-	//d( $umail );
 
 	try {
-		$auth->loginWithUsername( $uname, $upass );
-		echo "user is logged in" . "<br>";
+	   //$auth->loginWithUsername($username, $password, $rememberDuration = null, callable $onBeforeSuccess = null)
+		$auth->loginWithUsername( $uname, $upass, (60 * 60 * 24), null );
+		//echo "user is logged in" . "<br>";
 	} catch ( \Delight\Auth\UnknownUsernameException $e ) {
-		echo "unknown username" . "<br>";
+		//echo "unknown username" . "<br>";
 	} catch ( \Delight\Auth\AmbiguousUsernameException $e ) {
-		echo "ambiguous username" . "<br>";
+		//echo "ambiguous username" . "<br>";
 	} catch ( \Delight\Auth\InvalidPasswordException $e ) {
-		echo "wrong password" . "<br>";
+		//echo "wrong password" . "<br>";
 	} catch ( \Delight\Auth\EmailNotVerifiedException $e ) {
-		echo "email not verified" . "<br>";
+		//echo "email not verified" . "<br>";
 	} catch ( \Delight\Auth\TooManyRequestsException $e ) {
-		echo "too many requests" . "<br>";
+		//echo "too many requests" . "<br>";
 	}
 }
 
@@ -29,9 +29,7 @@ if ( $auth->isLoggedIn() ) {
 	$email = $auth->getEmail();
 	echo "Howdy " . $email . "<br>";
 }
-?>
-
-   <!-- Button trigger modal -->
+?> <!-- Button trigger modal -->
    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
       Login Now
    </button>
@@ -63,7 +61,16 @@ if ( $auth->isLoggedIn() ) {
                <div class="form-group">
                   <div class="input-group input-group-relative">
                      <div class="input-group-addon"><img src="assets/fonts/solid/user.svg" class="user"></div>
-                     <input name="uname_email" type="text" id="name" class="form-control" placeholder="User ID or Email Address" maxlength="40"
+                     <input name="uname_name" type="text" id="name" class="form-control" placeholder="User ID" maxlength="40"
+                            autofocus="true">
+                  </div>
+                  <span class="help-block" id="check-u"></span>
+               </div>
+
+               <div class="form-group">
+                  <div class="input-group input-group-relative">
+                     <div class="input-group-addon"><img src="assets/fonts/solid/user.svg" class="email"></div>
+                     <input name="uname_email" type="text" id="email" class="form-control" placeholder="Email Address" maxlength="40"
                             autofocus="true">
                   </div>
                   <span class="help-block" id="check-e"></span>
@@ -96,8 +103,6 @@ if ( $auth->isLoggedIn() ) {
          </form>
       </div>
    </div>
-
-
 <?php
 require_once( __DIR__ . "/admin/footer.php" );
 

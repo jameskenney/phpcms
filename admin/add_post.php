@@ -7,9 +7,9 @@
  */
 ?>
 <?php
-require_once( __DIR__ . '/../vendor/autoload.php' );
+require_once( __DIR__ . '/../bootstrap.php' );
 
-require ('config.php');
+//equire ('config.php');
 
 if(isset($_POST['create_post'])) {
 

@@ -1,9 +1,7 @@
 <?php
 require_once( 'config.php' );
 require_once( 'functions.php' );
-require_once( __DIR__ . '/../vendor/autoload.php' );
-
-$db = new \PDO( 'mysql:dbname=phpcmsDB;host=localhost;charset=utf8mb4', 'phpcmsDB', 'T)Pu.WuRE6zW8X' );
+require_once( __DIR__ . '/../assets/vendor/autoload.php' );
 
 //$id = $_GET[ 'id' ];
 //$email = $auth->getEmail();

@@ -9,7 +9,8 @@
  * @license GNU General Public License 2.0+
  */
 
-//namespace CampFirePixels\${MY_NAMESPACE};?>s
+require_once( __DIR__ . '/../bootstrap.php' );
+?>
 
 <form class="form-horizontal">
    <fieldset>

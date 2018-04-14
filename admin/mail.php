@@ -9,6 +9,7 @@
  * @license GNU General Public License 2.0+
  */
 require_once( __DIR__ . "/head.php" );
+require_once( __DIR__ . '/../bootstrap.php' );
 
 //$url = 'https://www.example.com/verify_email?selector=' . \urlencode($selector) . '&token=' . \urlencode($token);
 ddd( $_GET );
