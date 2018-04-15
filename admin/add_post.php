@@ -10,6 +10,7 @@
 require_once( __DIR__ . '/../vendor/autoload.php' );
 
 require ('config.php');
+include ('head_admin.php');
 
 if(isset($_POST['create_post'])) {
 
@@ -28,9 +29,9 @@ if(isset($_POST['create_post'])) {
 
 	move_uploaded_file( $post_image_temp, "../assets/images/$post_image" );
 
-	$query = "INSERT INTO posts (post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags,post_comment_count,post_status,post_excerpt) ";
+	$query = "INSERT INTO posts (post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags,post_comment_count,post_status) ";
 
-	$query .= "VALUES({$post_category_id},'{$post_title}', '{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_comment_count}', '{$post_status}' , '{$post_excerpt}')";
+	$query .= "VALUES({$post_category_id},'{$post_title}', '{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_comment_count}', '{$post_status}')";
 
 	$create_post_query = mysqli_query($connection, $query);
 
@@ -95,7 +96,7 @@ if(isset($_POST['create_post'])) {
 
             <div class="form-group">
                 <label for="post_content">Post Content</label>
-                <textarea class="form-control" name="post_content" id="" cols="30" rows="10" type="text" class="form-control" ></textarea>
+                <textarea class="form-control" name="post_content" id="body" cols="30" rows="10" type="text" class="form-control" ></textarea>
             </div>
 
             <div class="form-group">
@@ -106,3 +107,16 @@ if(isset($_POST['create_post'])) {
     </div>
 </div>
 
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#body' ), {
+            removePlugins: [ 'Heading', 'Link' ],
+            toolbar: [ 'bold', 'italic', 'bulletedList', 'numberedList']
+        } )
+        .catch( error => {
+        console.log( error );
+    }
+
+
+    );
+</script>
