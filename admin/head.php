@@ -9,8 +9,7 @@
  * @license GNU General Public License 2.0+
  */
 
-require_once( __DIR__ . '/config.php' );
-require_once( 'functions.php' );
+require_once( __DIR__ . '/../bootstrap.php' );
 
 $cms_url       = "";
 $server_name   = strip_tags( trim( $_SERVER[ 'SERVER_NAME' ] ) );
@@ -32,18 +31,19 @@ if ( is_ssl() ) {
    <meta name="description" content="">
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   <link rel="manifest" href="site.webmanifest">
    <link rel="apple-touch-icon" href="icon.png">
    <!-- Place favicon.ico in the root directory -->
 
-<!--   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />-->
-<!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css">-->
-    <link rel="stylesheet" href="../assets/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-beta.3/classic/ckeditor.js"></script>
+
+  
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+   <link rel="stylesheet" href="../assets/select2/dist/css/select2.min.css">
+   <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="../assets/css/bootstrap-grid.min.css">
+   <link rel="stylesheet" href="../assets/css/bootstrap-reboot.min.css">
+   <link rel="stylesheet" href="../assets/css/main.css">
+  <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-beta.3/classic/ckeditor.js"></script>
+
 </head>
 <body>
 <!--[if lte IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser </a> to improve your experience and security.</p><![endif]-->

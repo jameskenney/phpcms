@@ -1,6 +1,7 @@
 <?php
 
 require_once( __DIR__ . "/head.php" );
+require_once( __DIR__ . '/../bootstrap.php' );
 
 $list_of_roles = \Delight\Auth\Role::getNames();
 
@@ -10,7 +11,7 @@ $roles = json_encode( $list_of_roles );
 $j = 0;
 // event not selecting single select2 with jQuery
 ?>
-<form class="signup-form-container" method="post" id="roles-form" name="roles-form">
+<form class="signup-form-container" method="get" id="roles-form" name="roles-form">
 
    <div class="form-header">
       <h3><span class="login-title"><img src="../assets/fonts/solid/user.svg" alt="icon of user"
@@ -45,28 +46,25 @@ $j = 0;
             <div class="input-group-addon">
                <img src="../assets/fonts/solid/envelope.svg" alt="icon of mail" class="user">
             </div>
-            <select id="js_users" class="js_users style='width: 350px' ">
+            <select id="js_users" class="js_users" style='width: 350px' >
                <option value="" data-select2-id=""></option>
 			      <?php require_once( __DIR__ . "/users.php" ); ?> <!-- populate users  -->
             </select>
          </div>
          <span class="help-block" id="check-u"></span>
       </div>
-
       <div class="form-group">
          <div class="input-group input-group-relative">
             <label class="control-label" for="js-roles">Add or subtract roles</label><br>
             <div class="input-group-addon">
-               <img src="../assets/fonts/solid/search.svg" alt="icon of user" class="user">
+               <img src="../assets/fonts/solid/user-alt.svg" alt="icon of user" class="user">
             </div>
-            <select id="js_roles" class="js-multiple-roles style='width: 340px' multiple='multiple'">
-               <option></option>
-				   <?php require_once( __DIR__ . "/roles.php" ); ?> <!-- populate user role choices -->
+            <select id="js_roles" class="js-multiple-roles" style='width: 340px' multiple='multiple'>
+	            <?php //require_once( __DIR__ . '/get-id-ajax.php' ); ?><!-- <!-- populate user role choices -->
             </select>
          </div>
          <span class="help-block" id="check-s"></span>
       </div>
-
    </div>
    <div class="form-footer">
       <div class="row">
@@ -81,7 +79,9 @@ $j = 0;
 
 <?php
 
-d($auth->getRoles());
+//d(require_once( __DIR__ . "/get-roles-ajax.php" )) ; // <!-- populate user role choices -->
+
+//d($auth->getRoles());
 
 //try {
 //	$auth->admin()->logInAsUserById(16);

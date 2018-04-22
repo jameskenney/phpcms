@@ -5,7 +5,9 @@
  * Date: 4/7/2018
  * Time: 10:57 PM
  */
-include "head_admin.php" ?>
+include "head_admin.php"
+//require_once( __DIR__ . '/../bootstrap.php' );?>
+
 </div>
 </div>
 <?php deleteCategories(); ?>

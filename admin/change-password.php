@@ -1,7 +1,7 @@
 <?php
 
 require_once( __DIR__ . "/head.php" );
-
+require_once( __DIR__ . '/../bootstrap.php' );
 
 if ( isset( $_POST[ 'btn-login' ] ) ) {
 	$uname = strip_tags( trim( $_POST[ 'uname_email' ] ) );

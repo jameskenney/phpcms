@@ -1,13 +1,12 @@
 <?php
 require_once( "head.php" );
+require_once( __DIR__ . '/../bootstrap.php' );
 
 if ( isset( $_POST[ 'btn-logout' ] ) ) {
-
 	$auth->logOut();
-	header('Location: ' . $server_name);
+	redirect( $server_name );
 }
 ?>
-
    <!-- Button trigger modal -->
    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
       Logout CMS?

@@ -1,11 +1,5 @@
-<link rel="stylesheet" href="/assets/select2/dist/css/select2.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="/assets/select2/dist/js/select2.full.min.js"></script>
 <?php
-require_once( __DIR__ . '/config.php' );
-require_once( __DIR__ . '/../vendor/autoload.php' );
-
-$db = new PDO( 'mysql:dbname=phpcmsDB;host=localhost;charset=utf8mb4', 'phpcmsDB', 'T)Pu.WuRE6zW8X' );
+require_once( __DIR__ . '/../bootstrap.php' );
 
 function getUserList() {
 	global $db;
@@ -31,11 +25,12 @@ function getUserList() {
 
 
 function getUsers() {
-	global $auth;
+	//global $auth;
 	global $usersJson;
 
 	$list_of_users = getUserList();
-	var_dump( $list_of_users );
+
+	//d( $list_of_users );
 	$usersJson = '';
 
 	for ( $k = 0; $k < count( $list_of_users ); $k ++ ) {
@@ -47,3 +42,4 @@ function getUsers() {
 }
 
 getUsers();
+
