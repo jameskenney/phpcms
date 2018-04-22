@@ -49,7 +49,6 @@ if(isset($_POST['update_post'])) {
 	$post_image_temp = $_FILES['image']['tmp_name'];
 	$post_content = $_POST['post_content'];
 	$post_tags = $_POST['post_tags'];
-	$post_excerpt = $_POST['post_excerpt'];
 
 	move_uploaded_file($post_image_temp, "../assets/images/$post_image");
 
@@ -71,7 +70,6 @@ if(isset($_POST['update_post'])) {
 	$query .="post_status = '{$post_status}', ";
 	$query .="post_tags = '{$post_tags}', ";
 	$query .="post_content = '{$post_content}', ";
-	$query .="post_excerpt = '{$post_excerpt}', ";
 	$query .="post_image = '{$post_image}' ";
 	$query .="WHERE post_id = {$the_post_id} ";
 
@@ -132,12 +130,6 @@ if(isset($_POST['update_post'])) {
             <div class="form-group">
                 <label for="post_content">Post Content</label>
                 <textarea name="post_content" id="" cols="30" rows="10" type="text" class="form-control" ><?php echo $post_content; ?>
-                </textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="post_excerpt">Post Excerpt</label>
-                <textarea class="form-control" name="post_excerpt" id="" cols="30" rows="10" type="text" class="form-control" ><?php echo $post_excerpt; ?>
                 </textarea>
             </div>
 

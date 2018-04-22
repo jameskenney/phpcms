@@ -34,11 +34,16 @@ if ( is_ssl() ) {
    <link rel="apple-touch-icon" href="icon.png">
    <!-- Place favicon.ico in the root directory -->
 
+
+  
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+   <link rel="stylesheet" href="../assets/select2/dist/css/select2.min.css">
    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
    <link rel="stylesheet" href="../assets/css/bootstrap-grid.min.css">
    <link rel="stylesheet" href="../assets/css/bootstrap-reboot.min.css">
    <link rel="stylesheet" href="../assets/css/main.css">
+  <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-beta.3/classic/ckeditor.js"></script>
+
 </head>
 <body>
 <!--[if lte IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser </a> to improve your experience and security.</p><![endif]-->
@@ -84,14 +89,13 @@ if ( is_ssl() ) {
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/admin/posts.php">Posts</a>
-                        <a class="dropdown-item" href="/admin/categories.php">Categories</a>
                         <a class="dropdown-item" href="../admin/posts.php?source=add_post">Add post</a>
-                        <a class="dropdown-item" href="../admin/categories.">Edit Categories</a>
+                        <a class="dropdown-item" href="/admin/categories.php">View/Edit Categories</a>
                     </div>
                 </li>
             </ul>
             <!-- Blog Search Well - Sends user to search.php after search -->
-            <form class="form-inline mt-2 mt-md-0"  action="search.php" method="post">
+            <form class="form-inline mt-2 mt-md-0"  action="../search.php" method="post">
                 <input  name="search" type="text" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-entice my-2 my-sm-0" name="submit" type="submit">Search</button>
             </form> <!-- /Search Form -->

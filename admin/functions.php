@@ -161,7 +161,8 @@ function getEmailForUserById( $id ) {
 }
 
 
-function insert_categories() {
+function insert_categories(){
+
 
 	global $connection;
 
@@ -176,27 +177,20 @@ function insert_categories() {
 		} else {
 
 
-			$stmt = mysqli_prepare( $connection, "INSERT INTO categories(cat_title) VALUES(?) " );
+			$stmt = mysqli_prepare($connection, "INSERT INTO categories(cat_title) VALUES(?) ");
 
-			mysqli_stmt_bind_param( $stmt, 's', $cat_title );
+			mysqli_stmt_bind_param($stmt, 's', $cat_title);
 
-			mysqli_stmt_execute( $stmt );
+			mysqli_stmt_execute($stmt);
 
-
-			if ( ! $stmt ) {
-				die( 'QUERY FAILED' . mysqli_error( $connection ) );
+			if(!$stmt) {
+				die('QUERY FAILED'. mysqli_error($connection));
 
 			}
-
-
 		}
-
-
-		mysqli_stmt_close( $stmt );
-
+		mysqli_stmt_close($stmt);
 
 	}
-
 }
 
 
@@ -206,9 +200,13 @@ function findAllCategories() {
 	$query             = "SELECT * FROM categories";
 	$select_categories = mysqli_query( $connection, $query );
 
-	while ( $row = mysqli_fetch_assoc( $select_categories ) ) {
-		$cat_id    = $row[ 'cat_id' ];
-		$cat_title = $row[ 'cat_title' ];
+
+	$select_categories = mysqli_real_escape_string($connection, $query);
+
+
+	while($row = mysqli_fetch_assoc($select_categories)) {
+		$cat_id = $row['cat_id'];
+		$cat_title = $row['cat_title'];
 		echo "<tr>";
 		echo "<td>{$cat_id}</td>";
 		echo "<td>{$cat_title}</td>";

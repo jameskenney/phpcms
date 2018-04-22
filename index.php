@@ -13,8 +13,7 @@
 		   $post_title = $row['post_title'];
 		   $post_date = $row['post_date'];
 		   $post_image = $row['post_image'];
-		   $post_content = $row['post_content'];
-		   $post_excerpt = $row['post_excerpt'];
+		   $post_content = substr($row['post_content'], 0,200);
 
 		   ?>
            <h1>
@@ -24,7 +23,7 @@
                Written on <?php echo $post_date; ?> by <?php echo $post_author; ?>
            </p>
            <img src="assets/images/<?php echo $post_image ?>">
-           <p><?php echo $post_excerpt; ?></p>
+           <p><?php echo $post_content; ?>...</p>
            <a class="btn btn-entice" href="post.php?p_id=<?php echo $post_id ?>">Read More<span class="glyphicon glyphicon-chevron-right"></span></a>
 
 	   <?php } ?>
