@@ -741,3 +741,75 @@ h3 .login-title {
    border-color: #26A195;
    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(38, 161, 149, 0.6);
 }
+
+
+
+.entice-orange {
+   color: #FC653F;
+}
+
+.btn-blue {
+   background-color: #26A195;
+}
+
+.background-jumbotron-text {
+   background-color: rgba(38,161,149,.5);
+}
+
+.jumbotron-text {
+   font-size: 30px;
+   color: #fff;
+   max-width: 1000px;
+   margin-top: 160px;
+}
+
+.jumbotron {
+   background-image: url('/assets/images/dont-just-stand-there1.jpg');
+   height: 100%;
+   width: 100%;
+   background-size: cover;
+}
+
+.front-center-page-div {
+   background-color: #DAD6C6;
+   border-radius: 25px;
+   text-align: center;
+}
+
+.material-icons.md-48 {
+   padding-top: 20px;
+}
+
+.material-icons.blue600 {
+   color: #26A195;
+}
+
+
+.home-container {
+   width: 90%;
+}
+
+
+.navbar {
+   width: 100%;
+}
+
+
+
+
+
+
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
