@@ -1,45 +1,40 @@
 <?php
 require_once( __DIR__ . '/../bootstrap.php' );
 
-function getUserList() {
-	global $db;
-	try {
-		$stmt = $db->prepare( 'SELECT id, email FROM users ORDER BY id' );
-		$stmt->execute();
-		$users = $stmt->fetchall( PDO::FETCH_ASSOC );
+if(isset($_GET['source'])){
 
-	} catch ( Error $e ) {
-		throw new DatabaseError();
-	}
+	$source = $_GET['source'];
 
-	if ( empty( $users ) ) {
-		throw new UnknownUsernameException();
-	} else {
-		if ( \count( $users ) > 0 ) {
-			return $users;
-		} else {
-			throw new AmbiguousUsernameException();
-		}
-	}
+} else {
+
+	$source = '';
+
+}
+
+switch ($source){
+
+	case 'add_user';
+		include "../includes/add_user.php";
+		break;
+
+	case 'admin/edit_user';
+		include "../includes/edit_user.php";
+		break;
+
+
+	case '200';
+		include "NICE 200";
+		break;
+
+	default:
+		include "../includes/view_all_users.php";
+		break;
 }
 
 
-function getUsers() {
-	//global $auth;
-	global $usersJson;
 
-	$list_of_users = getUserList();
-
-	//d( $list_of_users );
-	$usersJson = '';
-
-	for ( $k = 0; $k < count( $list_of_users ); $k ++ ) {
-
-		$usersJson .= '    <option value="' . $list_of_users[ $k ][ 'id' ] . '">' . $list_of_users[ $k ][ 'email' ] . '</option>';
-	}
-
-	echo( $usersJson );
-}
-
-getUsers();
-
+?>
+<!-- This code will keep the drop down nav menu working after you click on post.php -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

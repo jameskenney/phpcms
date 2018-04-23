@@ -9,8 +9,8 @@
 <?php
 require_once( __DIR__ . '/../bootstrap.php' );
 
-require ('config.php');
-include ('head_admin.php');
+require( '../admin/config.php' );
+include( '../admin/head_admin.php' );
 
 if(isset($_POST['create_post'])) {
 

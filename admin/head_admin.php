@@ -74,9 +74,8 @@ if ( is_ssl() ) {
                         Admin
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/admin/register.php">Register User</a>
-                        <a class="dropdown-item" href="/admin/user-roles.php">Add/Remove User Roles</a>
-                        <a class="dropdown-item" href="/admin/delete-users.php">Delete User</a>
+                        <a class="dropdown-item" href="/admin/users.php">View All Users</a>
+                        <a class="dropdown-item" href="users.php?source=add_user">Add User</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
