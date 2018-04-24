@@ -20,24 +20,24 @@
                 <a class="nav-link" href="/login.php">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/exit.php">Logout</a>
+                <a class="nav-link" href="../admin/exit.php">Logout</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/login-as.php">Login As</a>
+                <a class="nav-link" href="../admin/login-as.php">Login As</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/change-password.php">Change Password</a>
+                <a class="nav-link" href="../admin/change-password.php">Change Password</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/change-email.php">Change Email</a>
+                <a class="nav-link" href="../admin/change-email.php">Change Email</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Admin
+                    Users
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/admin/users.php">View All Users</a>
-                    <a class="dropdown-item" href="users.php?source=add_user">Add User</a>
+                    <a class="dropdown-item" href="../admin/users.php">View All Users</a>
+                    <a class="dropdown-item" href="../admin/users.php?source=add_user">Add User</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -45,9 +45,9 @@
                     Posts
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/admin/posts.php">Posts</a>
+                    <a class="dropdown-item" href="../admin/posts.php">Posts</a>
                     <a class="dropdown-item" href="../admin/posts.php?source=add_post">Add post</a>
-                    <a class="dropdown-item" href="/admin/categories.php">View/Edit Categories</a>
+                    <a class="dropdown-item" href="../admin/categories.php">View/Edit Categories</a>
                 </div>
             </li>
         </ul>

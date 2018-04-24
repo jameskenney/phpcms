@@ -9,8 +9,8 @@
 <?php
 require_once( __DIR__ . '/../bootstrap.php' );
 
-require( 'config.php' );
-include( 'head_admin.php' );
+require( '../admin/config.php' );
+include( '../admin/head_admin.php' );
 ?>
 <table class="table table-bordered table-hover">
     <thead>
@@ -46,7 +46,9 @@ include( 'head_admin.php' );
             echo "<td>$user_lastname</td>";
             echo "<td>$user_email</td>";
             echo "<td>$user_role</td>";
-            echo "<td><a href='users.php?source=edit_user&edit_user={$user_id}'>Edit</a></td>";
+	            echo "<td><a href='../admin/users.php?change_to_admin={$user_id}'>Admin</a></td>";
+	            echo "<td><a href='../admin/users.php?change_to_sub={$user_id}'>Subscriber</a></td>"
+                ;echo "<td><a href='users.php?source=edit_user&edit_user={$user_id}'>Edit</a></td>";
             echo "<td><a href='users.php?delete={$user_id}'>Delete</a></td>";
         echo "</tr>";
 
@@ -58,34 +60,34 @@ include( 'head_admin.php' );
 <?php
 
 if(isset($_GET['change_to_admin'])) {
-    $the_user_id = escape($_GET['change_to_admin']);
+    $the_user_id = $_GET['change_to_admin'];
 
     $query = "UPDATE users_new SET user_role = 'admin' WHERE user_id = $the_user_id   ";
     $change_to_admin_query = mysqli_query($connection, $query);
-    header("Location: users.php");
+    //header("Location: users.php");
+	//I always get an error when changing the header so I commented this out and just reload the page after a change
+
 
 }
 
 if(isset($_GET['change_to_sub'])){
-    $the_user_id = escape($_GET['change_to_sub']);
+    $the_user_id = $_GET['change_to_sub'];
 
     $query = "UPDATE users_new SET user_role = 'subscriber' WHERE user_id = $the_user_id   ";
     $change_to_sub_query = mysqli_query($connection, $query);
-    header("Location: users.php");
+    //header("Location: users.php");
+	//I always get an error when changing the header so I commented this out and just reload the page after a change
+
 }
 
-if(isset($_GET['delete'])){
+if(isset($_GET['delete'])) {
+    $the_user_id = $_GET['delete'];
 
-    if(isset($_SESSION['user_role'])) {
+    $query = "DELETE FROM users_new WHERE user_id = {$the_user_id}";
+    $delete_user_query = mysqli_query($connection, $query);
+	//header("Location: users.php");
+	//I always get an error when changing the header so I commented this out and just reload the page after a change
 
-        if($_SESSION['user_role'] == 'admin') {
 
-        $the_user_id = escape($_GET['delete']);
+}
 
-        $query = "DELETE FROM users_new WHERE user_id = {$the_user_id} ";
-        $delete_user_query = mysqli_query($connection, $query);
-        header("Location: users.php");
-            }
-        }
-    }
-?>
