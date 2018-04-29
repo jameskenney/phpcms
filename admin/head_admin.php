@@ -99,5 +99,10 @@ if ( is_ssl() ) {
     </nav>
     <!--   </div>-->
     <header class="masthead">
-
+		<?php
+		if ( $auth->isLoggedIn() ) {
+			$email = $auth->getEmail();
+			echo "Howdy " . $email . "<br>";
+		}
+		?>
     </header>

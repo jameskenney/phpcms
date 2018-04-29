@@ -5,13 +5,13 @@
  * Date: 4/25/2018
  * Time: 11:24 PM
  */
-
+?>
+<?php
 
 include "../admin/config.php";
+session_start();
 
 //The login feature pushes its info to POST on this page
-
-
 
 if(isset($_POST['login'])) { //$_POST['login'] grabs it and then stores the info in two variables
 
@@ -39,7 +39,7 @@ if(isset($_POST['login'])) { //$_POST['login'] grabs it and then stores the info
 		$db_user_password  = $row['user_password'];
 		$db_user_firstname = $row['user_firstname'];
 		$db_user_lastname  = $row['user_lastname'];
-		$db_user_row       = $row['user_role'];
+		$db_user_role       = $row['user_role'];
 	}
 
 	if( $username !== $db_username && $password !== $db_user_password ) {
@@ -47,7 +47,18 @@ if(isset($_POST['login'])) { //$_POST['login'] grabs it and then stores the info
 		header( "Location: ../index.php" );
 
 	} else if( $username == $db_username && $password == $db_user_password ){
-		header( "Location: ../admin.php" );
+// Assign from right to left
+		$_SESSION['username'] = $db_username;
+		$_SESSION['firstname'] = $db_user_firstname;
+		$_SESSION['lastname'] = $db_user_lastname;
+		$_SESSION['user_role'] = $db_user_role;
+
+
+
+
+
+
+		header( "Location: ../admin" );
 
 
 	} else {

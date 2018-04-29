@@ -6,17 +6,26 @@
  * Time: 11:43 PM
  */
 
-$db['db_host'] = "localhost";
-$db['user'] = "james";
-$db['pass'] = "";
-$db['name'] = "phpcmsDB";
+ob_start();
 
-foreach ($db as $key => $value){
-	define(strtoupper($key), $value);
-}
+require_once( __DIR__ . '/../vendor/autoload.php' );
 
-$connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-//if ($connection) {
-//	echo "Connected to the database";
+
+
+$db = new PDO('mysql:dbname=phpcmsDB;host=localhost;charset=utf8mb4', 'james', '');
+//$auth = new \Delight\Auth\Auth($db);
+//$whoops = new \Whoops\Run;
+//$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+//$whoops->register();
+
+
+$connection = mysqli_connect('localhost', 'root', 'root', 'phpcmsDB');
+
+//if ($connection){
+//	echo "Connected to phpcmsDB via login.php";
+//} else {
+//	echo "You're not connected to the database.";
 //}
+
+

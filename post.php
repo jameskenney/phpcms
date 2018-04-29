@@ -35,6 +35,6 @@
 
 	</main> <!-- main -->
 
-<?php include "sidebar.php" ?>
+<?php include "includes/sidebar.php" ?>
 
 <?php require_once( __DIR__ . "/admin/footer.php" );
