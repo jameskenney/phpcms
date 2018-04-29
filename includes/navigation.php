@@ -13,31 +13,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/login.php">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../admin/exit.php">Logout</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../admin/login-as.php">Login As</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../admin/change-password.php">Change Password</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../admin/change-email.php">Change Email</a>
-            </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Users
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="../admin/users.php">View All Users</a>
                     <a class="dropdown-item" href="../admin/users.php?source=add_user">Add User</a>
+                    <a class="dropdown-item" href="../admin/users.php">View All Users</a>
+
                 </div>
             </li>
             <li class="nav-item dropdown">

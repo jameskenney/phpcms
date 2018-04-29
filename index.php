@@ -5,8 +5,8 @@
  * Date: 4/22/2018
  * Time: 8:15 PM
  */
+ob_start();
 ?>
-
 <?php
 require "includes/navigation.php";
 ?>
@@ -84,28 +84,8 @@ require "includes/head.php";
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <h1>
-                                Recent Posts
-                            </h1>
-							<?php
-							$query                  = "SELECT * FROM posts";
-							$select_all_posts_query = mysqli_query( $connection, $query );
 
-							while($row = mysqli_fetch_assoc($select_all_posts_query)){
-								$post_author = $row['post_author'];
-								$post_title = $row['post_title'];
-								$post_date = $row['post_date'];
-								$post_id = $row['post_id'];
-								$post_content = substr($row['post_content'], 0,200);
-
-								?>
-                                <p>
-									<?php echo $post_title; ?> by <?php echo $post_author; ?>
-                                </p>
-                                <p><?php echo $post_content; ?>...</p>
-                                <a class="btn btn-entice" href="post.php?p_id=<?php echo $post_id ?>">Read More<span class="glyphicon glyphicon-chevron-right"></span></a>
-
-							<?php } ?>
+                            <?php include "includes/sidebar.php" ?>
 
                         </div>
                     </div>
