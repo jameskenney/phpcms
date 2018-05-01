@@ -1,0 +1,31 @@
+/************** Admin Styles **************/
+
+#page-wrapper,
+.side-nav,
+body {
+    background-color: #fefcec;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #000;
+}
+
+.side-nav li a:hover,
+.side-nav li a:focus {
+    background-color: #fdcd8f;
+}
+
+
+.navbar-inverse {
+    background-color: #fdcd8f;
+
+}
+
+.top-nav>li a,
+.navbar-inverse .navbar-brand {
+    color: #000;
+}
+
+.navbar-inverse .navbar-brand:hover {
+    color: #604829;
+}

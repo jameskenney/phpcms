@@ -6,7 +6,7 @@
  * Time: 8:15 PM
  */
 ?>
-<?php require( 'admin/config.php' ); ?>
+<?php require( 'admin/includes/db.php' ); ?>
 <?php include( 'includes/head.php' ); ?>
 
 <body>
@@ -53,6 +53,7 @@
                                                 <h1 class="entice-orange">
                                                     Responsive Designs
                                                 </h1>
+                                                <?php echo $_SESSION['username'] ?>
                                                 <p>
                                                     The lightweight coding behind SitEntice's design templates allow you to create websites that load fast and keep your visitors engaged.
                                                 </p>

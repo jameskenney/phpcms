@@ -8,7 +8,7 @@
 ?>
 <?php
 
-include "../admin/config.php";
+include "../admin/db.php";
 session_start();
 
 //The login feature pushes its info to POST on this page
@@ -52,10 +52,6 @@ if(isset($_POST['login'])) { //$_POST['login'] grabs it and then stores the info
 		$_SESSION['firstname'] = $db_user_firstname;
 		$_SESSION['lastname'] = $db_user_lastname;
 		$_SESSION['user_role'] = $db_user_role;
-
-
-
-
 
 
 		header( "Location: ../admin" );

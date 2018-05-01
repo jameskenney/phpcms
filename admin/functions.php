@@ -1,257 +1,299 @@
 <?php
 
-require_once( __DIR__ . '/../bootstrap.php' );
+function redirect($location){
 
-function confirmQuery( $result ) {
-
-	global $connection;
-
-	if ( ! $result ) {
-		die( "QUERY FAILED ." . mysqli_error( $connection ) );
-	}
+    header("Location:" . $location);
+    exit;
 
 }
 
-/**
- * Appends a trailing slash.
- *
- * Will remove trailing forward and backslashes if it exists already before adding
- * a trailing forward slash. This prevents double slashing a string or path.
- *
- * The primary use of this is for paths and thus should be used for paths. It is
- * not restricted to paths and offers no specific path support.
- *
- * @since 1.2.0
- *
- * @param string $string What to add the trailing slash to.
- *
- * @return string String with trailing slash added.
- */
-function trailingslashit( $string ) {
-	return untrailingslashit( $string ) . '/';
-}
+function ifItIsMethod($method=null){
 
-/**
- * Removes trailing forward slashes and backslashes if they exist.
- *
- * The primary use of this is for paths and thus should be used for paths. It is
- * not restricted to paths and offers no specific path support.
- *
- * @since 2.2.0
- *
- * @param string $string What to remove the trailing slashes from.
- *
- * @return string String without the trailing slashes.
- */
-function untrailingslashit( $string ) {
-	return rtrim( $string, '/\\' );
-}
+    if($_SERVER['REQUEST_METHOD'] == strtoupper($method)){
 
-/**
- * Determines if SSL is used.
- *
- * @since 2.6.0
- * @since 4.6.0 Moved from functions.php to load.php.
- *
- * @return bool True if SSL, otherwise false.
- */
-function is_ssl() {
-	if ( isset( $_SERVER[ 'HTTPS' ] ) ) {
-		if ( 'on' == strtolower( $_SERVER[ 'HTTPS' ] ) ) {
-			return true;
-		}
+        return true;
 
-		if ( '1' == $_SERVER[ 'HTTPS' ] ) {
-			return true;
-		}
-	} elseif ( isset( $_SERVER[ 'SERVER_PORT' ] ) && ( '443' == $_SERVER[ 'SERVER_PORT' ] ) ) {
-		return true;
-	}
+    }
 
-	return false;
-}
-
-/**
- * Determines if SSL is used.
- *
- * @since 2.6.0
- * @since 4.6.0 Moved from functions.php to load.php.
- *
- * @return bool True if SSL, otherwise false.
- */
-function base_uri() {
-	if ( isset( $_SERVER[ 'HTTPS' ] ) ) {
-		if ( 'on' == strtolower( $_SERVER[ 'HTTPS' ] ) ) {
-			return "https://";
-		}
-
-		if ( '1' == $_SERVER[ 'HTTPS' ] ) {
-			return "https://";
-		}
-	} elseif ( isset( $_SERVER[ 'SERVER_PORT' ] ) && ( '443' == $_SERVER[ 'SERVER_PORT' ] ) ) {
-		return "https://";
-	}
-
-	return "http://";
-}
-
-function sendMail( $selector, $token ) {
-	$uname       = strip_tags( trim( $_POST[ 'uname_uid' ] ) );
-	$umail       = strip_tags( trim( $_POST[ 'uname_email' ] ) );
-	$server_name = strip_tags( trim( $_SERVER[ 'SERVER_NAME' ] ) );
-
-	$resetUrl = "http://" . $server_name . "/admin/verify_email.php?selector=";
-	$resetUrl .= \urlencode( $selector ) . '&token=';
-	$resetUrl .= \urlencode( $token );
-
-	$from    = 'From: ' . "php" . ' ' . "CMS";
-	$to      = $umail . ', dgs@riskiii.com';
-	$subject = $_SERVER[ 'SERVER_NAME' ] . '  Password Reset';
-
-	$headers = $from . "\r\n";
-	$headers .= "Reply-To: " . $umail . "\r\n";
-	$headers .= "MIME-Version: 1.0\r\n";
-	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
-	$message = "<!DOCTYPE html>";
-	$message .= "<html lang='en'>";
-	$message .= "<head>";
-	$message .= "   <meta charset='UTF-8'>";
-	$message .= "   <title>Title</title>";
-	$message .= "</head>";
-	$message .= "<body>";
-	$message .= 'Someone has requested a password reset for the following account:<br><br>';
-	$message .= '<a href="http://' . $server_name . '">http://' . $server_name . '/</a><br><br>';
-	$message .= 'Username: ' . $uname . '<br><br>';
-	$message .= 'If this was a mistake, just ignore this email and nothing will happen.<br>';
-	$message .= 'To reset your password, visit the following address:<br><br>';
-	$message .= '<a href="' . $resetUrl . '">' . $resetUrl . '</a><br>';
-	$message .= '<br><br>';
-	$message .= "</body>";
-	$message .= "</html>";
-
-	mail( $to, $subject, $message, $headers );
-}
-
-
-function getEmailForUserById( $id ) {
-
-	$email = "";
-	$db    = new PDO( 'mysql:dbname=phpcmsDB;host=localhost;charset=utf8mb4', 'phpcmsDB', 'T)Pu.WuRE6zW8X' );
-	try {
-
-		$stmt = $db->prepare( 'SELECT id, email FROM users WHERE id = :id' );
-		$stmt->execute( [ 'id' => $id ] );
-		$users = $stmt->fetch();
-
-	} catch ( Error $e ) {
-		throw new DatabaseError();
-	}
-
-	if ( empty( $users ) ) {
-		throw new Exception( 'No users.' );
-	} else {
-		if ( count( $users ) > 0 ) {
-			return $users;
-		} else {
-			throw new Exception( 'No users' );
-		}
-	}
+    return false;
 
 }
 
+function isLoggedIn(){
+
+    if(isset($_SESSION['user_role'])){
+
+        return true;
+
+    }
+
+   return false;
+
+}
+
+function checkIfUserIsLoggedInAndRedirect($redirectLocation=null){
+
+    if(isLoggedIn()){
+
+        redirect($redirectLocation);
+
+    }
+
+}
+
+function escape($string) {
+
+global $connection;
+
+return mysqli_real_escape_string($connection, trim($string));
+
+}
+
+function set_message($msg){
+
+if(!$msg) {
+
+$_SESSION['message']= $msg;
+
+} else {
+
+$msg = "";
+
+    }
+
+}
+
+function display_message() {
+
+    if(isset($_SESSION['message'])) {
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
+
+}
+
+function confirmQuery($result) {
+    
+    global $connection;
+
+    if(!$result ) {
+          
+          die("QUERY FAILED ." . mysqli_error($connection));
+
+      }
+
+}
 
 function insert_categories(){
+    
+    global $connection;
 
+        if(isset($_POST['submit'])){
 
-	global $connection;
+            $cat_title = $_POST['cat_title'];
 
-	if ( isset( $_POST[ 'submit' ] ) ) {
+        if($cat_title == "" || empty($cat_title)) {
+        
+             echo "This Field should not be empty";
+    
+    } else {
 
-		$cat_title = $_POST[ 'cat_title' ];
+    $stmt = mysqli_prepare($connection, "INSERT INTO categories(cat_title) VALUES(?) ");
 
-		if ( $cat_title == "" || empty( $cat_title ) ) {
+    mysqli_stmt_bind_param($stmt, 's', $cat_title);
 
-			echo "This Field should not be empty";
+    mysqli_stmt_execute($stmt);
 
-		} else {
+        if(!$stmt) {
+        die('QUERY FAILED'. mysqli_error($connection));
+        
+                  }
 
+             }
 
-			$stmt = mysqli_prepare($connection, "INSERT INTO categories(cat_title) VALUES(?) ");
+    mysqli_stmt_close($stmt);
+        
+       }
 
-			mysqli_stmt_bind_param($stmt, 's', $cat_title);
-
-			mysqli_stmt_execute($stmt);
-
-			if(!$stmt) {
-				die('QUERY FAILED'. mysqli_error($connection));
-
-			}
-		}
-		mysqli_stmt_close($stmt);
-
-	}
 }
 
 
 function findAllCategories() {
-	global $connection;
+global $connection;
 
-	$query             = "SELECT * FROM categories";
-	$select_categories = mysqli_query( $connection, $query );
+    $query = "SELECT * FROM categories";
+    $select_categories = mysqli_query($connection,$query);  
 
+    while($row = mysqli_fetch_assoc($select_categories)) {
+    $cat_id = $row['cat_id'];
+    $cat_title = $row['cat_title'];
 
-	$select_categories = mysqli_real_escape_string($connection, $query);
+    echo "<tr>";
+        
+    echo "<td>{$cat_id}</td>";
+    echo "<td>{$cat_title}</td>";
+   echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
+   echo "<td><a href='categories.php?edit={$cat_id}'>Edit</a></td>";
+    echo "</tr>";
 
+    }
 
-	while($row = mysqli_fetch_assoc($select_categories)) {
-		$cat_id = $row['cat_id'];
-		$cat_title = $row['cat_title'];
-		echo "<tr>";
-		echo "<td>{$cat_id}</td>";
-		echo "<td>{$cat_title}</td>";
-		echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
-		echo "<td><a href='categories.php?edit={$cat_id}'>Edit</a></td>";
-		echo "</tr>";
-	}
 }
 
-function deleteCategories() {
-	global $connection;
 
-	if ( isset( $_GET[ 'delete' ] ) ) {
-		$the_cat_id   = $_GET[ 'delete' ];
-		$query        = "DELETE FROM categories WHERE cat_id = {$the_cat_id} ";
-		$delete_query = mysqli_query( $connection, $query );
-//		header("Location: categories.php");
+function deleteCategories(){
+global $connection;
 
-	}
+    if(isset($_GET['delete'])){
+    $the_cat_id = $_GET['delete'];
+    $query = "DELETE FROM categories WHERE cat_id = {$the_cat_id} ";
+    $delete_query = mysqli_query($connection,$query);
+    header("Location: categories.php");
+
+    }
+
+
 }
 
-function redirect( $url ) {
-	$baseUri = base_uri();
+function UnApprove() {
+global $connection;
+if(isset($_GET['unapprove'])){
+    
+    $the_comment_id = $_GET['unapprove'];
+    
+    $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = $the_comment_id ";
+    $unapprove_comment_query = mysqli_query($connection, $query);
+    header("Location: comments.php");
 
-	if ( headers_sent() ) {
-		$string = '<script type="text/javascript">';
-		$string .= 'window.location = "' . $baseUri . $url . '"';
-		$string .= '</script>';
+    }
 
-		echo $string;
-	} else {
-		if ( isset( $_SERVER[ 'HTTP_REFERER' ] ) AND ( $url == $_SERVER[ 'HTTP_REFERER' ] ) ) {
-			header( 'Location: ' . $_SERVER[ 'HTTP_REFERER' ] );
-		} else {
-			header( 'Location: ' . $baseUri . $url );
-		}
-
-	}
-	exit;
 }
 
-function debug_to_console( $data ) {
-	$output = $data;
-	if ( is_array( $output ) )
-		$output = implode( ',', $output);
+function is_admin($username) {
 
-	echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+    global $connection; 
+
+    $query = "SELECT user_role FROM users WHERE username = '$username'";
+    $result = mysqli_query($connection, $query);
+    confirmQuery($result);
+
+    $row = mysqli_fetch_array($result);
+
+    if($row['user_role'] == 'admin'){
+
+        return true;
+
+    }else {
+
+        return false;
+    }
+
 }
+
+function username_exists($username){
+
+    global $connection;
+
+    $query = "SELECT username FROM users WHERE username = '$username'";
+    $result = mysqli_query($connection, $query);
+    confirmQuery($result);
+
+    if(mysqli_num_rows($result) > 0) {
+
+        return true;
+
+    } else {
+
+        return false;
+
+    }
+
+}
+
+function email_exists($email){
+
+    global $connection;
+
+    $query = "SELECT user_email FROM users WHERE user_email = '$email'";
+    $result = mysqli_query($connection, $query);
+    confirmQuery($result);
+
+    if(mysqli_num_rows($result) > 0) {
+
+        return true;
+
+    } else {
+
+        return false;
+
+    }
+
+}
+
+function register_user($username, $email, $password){
+
+    global $connection;
+
+        $username = mysqli_real_escape_string($connection, $username);
+        $email    = mysqli_real_escape_string($connection, $email);
+        $password = mysqli_real_escape_string($connection, $password);
+
+        $password = password_hash( $password, PASSWORD_BCRYPT, array('cost' => 12));
+
+        $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
+        $query .= "VALUES('{$username}','{$email}', '{$password}', 'subscriber' )";
+        $register_user_query = mysqli_query($connection, $query);
+
+        confirmQuery($register_user_query);
+
+}
+
+ function login_user($username, $password)
+ {
+
+     global $connection;
+
+     $username = trim($username);
+     $password = trim($password);
+
+     $username = mysqli_real_escape_string($connection, $username);
+     $password = mysqli_real_escape_string($connection, $password);
+
+     $query = "SELECT * FROM users WHERE username = '{$username}' ";
+     $select_user_query = mysqli_query($connection, $query);
+     if (!$select_user_query) {
+
+         die("QUERY FAILED" . mysqli_error($connection));
+
+     }
+
+     while ($row = mysqli_fetch_array($select_user_query)) {
+
+         $db_user_id = $row['user_id'];
+         $db_username = $row['username'];
+         $db_user_password = $row['user_password'];
+         $db_user_firstname = $row['user_firstname'];
+         $db_user_lastname = $row['user_lastname'];
+         $db_user_role = $row['user_role'];
+
+
+         if (password_verify($password,$db_user_password)) {
+
+             $_SESSION['username'] = $db_username;
+             $_SESSION['firstname'] = $db_user_firstname;
+             $_SESSION['lastname'] = $db_user_lastname;
+             $_SESSION['user_role'] = $db_user_role;
+
+             redirect("/cms/admin");
+
+         } else {
+
+             return false;
+
+         }
+
+     }
+
+     return true;
+
+ }

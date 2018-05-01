@@ -14,26 +14,23 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Users
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="../admin/users.php?source=add_user">Add User</a>
-                    <a class="dropdown-item" href="../admin/users.php">View All Users</a>
 
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Posts
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="../admin/posts.php">Posts</a>
-                    <a class="dropdown-item" href="../admin/posts.php?source=add_post">Add post</a>
-                    <a class="dropdown-item" href="../admin/categories.php">View/Edit Categories</a>
-                </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="view_all_posts.php">Posts <span class="sr-only">(current)</span></a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="about.php">About <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="../admin/">Admin <span class="sr-only">(current)</span></a>
+            </li>
+
         </ul>
         <!-- Blog Search Well - Sends user to search.php after search -->
         <form class="form-inline mt-2 mt-md-0 float-right"  action="../search.php" method="post">

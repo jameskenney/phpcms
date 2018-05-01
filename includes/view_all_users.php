@@ -6,7 +6,7 @@
  * Time: 6:45 PM
  */
 ?>
-<?php require( '../admin/config.php' );?>
+<?php require( '../admin/db.php' );?>
 <?php require( '../includes/head.php' ); ?>
 
 <body>
