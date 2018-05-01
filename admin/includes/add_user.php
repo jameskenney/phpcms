@@ -25,11 +25,11 @@
 ?>
 <form action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="title">Firstname</label>
+        <label for="title">First Name</label>
         <input type="text" class="form-control" name="user_firstname">
     </div>
     <div class="form-group">
-           <label for="post_status">Lastname</label>
+           <label for="post_status">Last Name</label>
            <input type="text" class="form-control" name="user_lastname">
     </div>
     <div class="form-group">
