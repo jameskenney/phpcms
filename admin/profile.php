@@ -86,8 +86,7 @@ if(isset($_POST['edit_user'])) {
             <div class="col-lg-12">
 
       <h1 class="page-header">
-                    Welcome to admin
-                    <small>Author</small>
+	      <?php echo $user_firstname; ?>'s profile
                 </h1>
 
                  <form action="" method="post" enctype="multipart/form-data">
