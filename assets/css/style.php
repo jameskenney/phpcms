@@ -7,7 +7,9 @@
  */
 ?>
 
-
+<?php
+header("Content-type: text/css; charset: UTF-8");
+?>
 
 /*! HTML5 Boilerplate v6.0.1 | MIT License | https://html5boilerplate.com/ */
 
