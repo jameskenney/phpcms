@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 center_page_content">
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="row">

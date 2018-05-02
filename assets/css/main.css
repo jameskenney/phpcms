@@ -696,11 +696,6 @@ h3 .login-title {
 }
 
 
-
-
-
-
-
 /* Button to match style guide */
 
 .btn-entice {
@@ -795,7 +790,9 @@ h3 .login-title {
 }
 
 
-
+.center_page_content {
+   padding-top: 25px;
+}
 
 
 
