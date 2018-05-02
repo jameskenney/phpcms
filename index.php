@@ -9,7 +9,20 @@
 <?php require( 'admin/includes/db.php' ); ?>
 <?php include( 'includes/head.php' ); ?>
 
-<body>
+<?php
+$query = "SELECT * FROM fp_styles";
+$select_fp_styles = mysqli_query($connection,$query);
+
+while($row = mysqli_fetch_assoc($select_fp_styles)) {
+	$admin_bar_color            = $row['admin_bar_color'];
+	$body_background_color          = $row['body_background_color'];
+
+}
+
+?>
+
+
+<body style="background-color: <?php echo htmlspecialchars(stripslashes($body_background_color)); ?>;">
     <div class="home-container">
         <div class="container-fluid">
             <?php require 'includes/navigation.php'; ?>

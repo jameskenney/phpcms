@@ -79,6 +79,10 @@
                 <a href="edit_about.php"><i class="fa fa-fw fa-pencil"></i> Edit About Page</a>
             </li>
 
+            <li>
+                <a href="edit_styles.php"><i class="fa fa-fw fa-paint-brush"></i> Edit Site Styles</a>
+            </li>
+
         </ul>
 
     </div>
