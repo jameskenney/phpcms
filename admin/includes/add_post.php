@@ -104,22 +104,13 @@
         }
 
 ?>
-           
-        
        </select>
-      
-      </div>
-
-
-
-
+       </div>
 
       <!-- <div class="form-group">
          <label for="title">Post Author</label>
           <input type="text" class="form-control" name="author">
       </div> -->
-      
-      
 
        <div class="form-group">
          <select name="post_status" id="">
@@ -128,9 +119,7 @@
              <option value="draft">Draft</option>
          </select>
       </div>
-      
-      
-      
+
     <div class="form-group">
          <label for="post_image">Post Image</label>
           <input type="file"  name="image">
