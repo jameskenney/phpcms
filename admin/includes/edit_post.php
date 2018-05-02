@@ -1,7 +1,7 @@
 <?php
 
     if(isset($_GET['p_id'])){
-    
+
     $the_post_id =  escape($_GET['p_id']);
 
     }
@@ -69,9 +69,6 @@
         
         echo "<p class='bg-success'>Post Updated. <a href='../post.php?p_id={$the_post_id}'>View Post </a> or <a href='posts.php'>Edit More Posts</a></p>";
 
-
-
-
     }
 
 
@@ -119,15 +116,11 @@
         }
 
 ?>
-
-
        </select>
-
-      </div>
-
+           </div>
         <div class="form-group">
-       <label for="users">Users</label>
-       <select name="post_user" id="">
+            <label for="users">Users</label>
+            <select name="post_user" id="">
 
 
 <?php echo "<option value='{$post_user}'>{$post_user}</option>"; ?>
@@ -152,12 +145,8 @@
 
 ?>
 
-
        </select>
-
       </div>
-
-
 
     <!--   <div class="form-group">
          <label for="title">Post Author</label>
@@ -181,15 +170,11 @@
           
           
     echo "<option value='published'>Publish</option>";
-          
-          
+
           }
-              
-              
-              
+
         ?>
-          
-          
+
       </select>
         </div>
 
@@ -211,8 +196,6 @@
         
          </textarea>
       </div>
-      
-      
 
        <div class="form-group">
           <input class="btn btn-primary" type="submit" name="update_post" value="Update Post">

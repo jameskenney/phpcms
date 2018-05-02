@@ -152,28 +152,13 @@ global $connection;
 
     }
 
-
-}
-
-function UnApprove() {
-global $connection;
-if(isset($_GET['unapprove'])){
-    
-    $the_comment_id = $_GET['unapprove'];
-    
-    $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = $the_comment_id ";
-    $unapprove_comment_query = mysqli_query($connection, $query);
-    header("Location: comments.php");
-
-    }
-
 }
 
 function is_admin($username) {
 
     global $connection; 
 
-    $query = "SELECT user_role FROM users WHERE username = '$username'";
+    $query = "SELECT user_role FROM users_new WHERE username = '$username'";
     $result = mysqli_query($connection, $query);
     confirmQuery($result);
 
@@ -194,7 +179,7 @@ function username_exists($username){
 
     global $connection;
 
-    $query = "SELECT username FROM users WHERE username = '$username'";
+    $query = "SELECT username FROM users_new WHERE username = '$username'";
     $result = mysqli_query($connection, $query);
     confirmQuery($result);
 
@@ -214,7 +199,7 @@ function email_exists($email){
 
     global $connection;
 
-    $query = "SELECT user_email FROM users WHERE user_email = '$email'";
+    $query = "SELECT user_email FROM users_new WHERE user_email = '$email'";
     $result = mysqli_query($connection, $query);
     confirmQuery($result);
 
@@ -240,7 +225,7 @@ function register_user($username, $email, $password){
 
         $password = password_hash( $password, PASSWORD_BCRYPT, array('cost' => 12));
 
-        $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
+        $query = "INSERT INTO users_new (username, user_email, user_password, user_role) ";
         $query .= "VALUES('{$username}','{$email}', '{$password}', 'subscriber' )";
         $register_user_query = mysqli_query($connection, $query);
 
@@ -259,7 +244,7 @@ function register_user($username, $email, $password){
      $username = mysqli_real_escape_string($connection, $username);
      $password = mysqli_real_escape_string($connection, $password);
 
-     $query = "SELECT * FROM users WHERE username = '{$username}' ";
+     $query = "SELECT * FROM users_new WHERE username = '{$username}' ";
      $select_user_query = mysqli_query($connection, $query);
      if (!$select_user_query) {
 

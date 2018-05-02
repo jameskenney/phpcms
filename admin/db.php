@@ -17,8 +17,8 @@ $db = new PDO('mysql:dbname=phpcmsDB;host=localhost;charset=utf8mb4', 'james', '
 
 $connection = mysqli_connect('localhost', 'root', 'root', 'phpcmsDB');
 
-//if ($connection){
-//	echo "Connected to phpcmsDB via login.php";
-//} else {
-//	echo "You're not connected to the database.";
-//}
+if ($connection){
+	echo "Connected to phpcmsDB via login.php";
+} else {
+	echo "You're not connected to the database.";
+}
