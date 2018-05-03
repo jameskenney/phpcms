@@ -23,21 +23,21 @@ require( '../admin/config.php' );?>
 
 	                if(isset($_GET['edit_user'])){
 
-		                $the_user_id =  $_GET['edit_user'];
+		                $the_user_id =  escape($_GET['edit_user']);
 
 		                $query = "SELECT * FROM users_new WHERE user_id = $the_user_id ";
 		                $select_users_query = mysqli_query($connection,$query);
 
 		                while($row = mysqli_fetch_assoc($select_users_query)) {
 
-			                $user_id        = $row['user_id'];
-			                $username       = $row['username'];
-			                $user_password  = $row['user_password'];
-			                $user_firstname = $row['user_firstname'];
-			                $user_lastname  = $row['user_lastname'];
-			                $user_email     = $row['user_email'];
-			                $user_image     = $row['user_image'];
-			                $user_role      = $row['user_role'];
+			                $user_id        = escape($row['user_id']);
+			                $username       = escape($row['username']);
+			                $user_password  = escape($row['user_password']);
+			                $user_firstname = escape($row['user_firstname']);
+			                $user_lastname  = escape($row['user_lastname']);
+			                $user_email     = escape($row['user_email']);
+			                $user_image     = escape($row['user_image']);
+			                $user_role      = escape($row['user_role']);
 
 		                }
 		                ?>
@@ -46,17 +46,17 @@ require( '../admin/config.php' );?>
 
 		                if(isset($_POST['edit_user'])) {
 
-			                $user_firstname   = $_POST['user_firstname'];
-			                $user_lastname    = $_POST['user_lastname'];
-			                $user_role        = $_POST['user_role'];
+			                $user_firstname   = escape($_POST['user_firstname']);
+			                $user_lastname    = escape($_POST['user_lastname']);
+			                $user_role        = escape($_POST['user_role']);
 
 			                // $post_image = $_FILES['image']['name'];
 			                // $post_image_temp = $_FILES['image']['tmp_name'];
 
-			                $username      = $_POST['username'];
-			                $user_email    = $_POST['user_email'];
-			                $user_password = $_POST['user_password'];
-			                $post_date     = date('d-m-y');
+			                $username      = escape($_POST['username']);
+			                $user_email    = escape($_POST['user_email']);
+			                $user_password = escape($_POST['user_password']);
+			                $post_date     = escape(date('d-m-y'));
 
 			                if(!empty($user_password)) {
 

@@ -58,16 +58,27 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)) {
 
                     ?>
 
+                    <div class="col-md-12">
+                        <img width="90%" src="assets/images/<?php echo $post_image ?>">
+                    </div>
 
-                    <img width="90%" src="assets/images/<?php echo $post_image ?>">
-                    <h1>
-                        <a href="#"><?php echo $post_title; ?></a>
-                    </h1>
-                    <span><p>
+                    <div class="col-md-12">
+                        <h1>
+                            <a href="#"><?php echo $post_title; ?></a>
+                        </h1>
+                    </div>
+
+
+                    <div class="col-md-12">
+                    <span>
+                        <p>
                         Written on <?php echo $post_date; ?> by <?php echo $post_author; ?>
-                    </p></span>
+                        </p></span>
+                    </div>
 
-                    <p><?php echo $post_content; ?></p>
+                    <div class="col-md-12">
+                        <p><?php echo $post_content; ?></p>
+                    </div>
 
                 <?php } ?>
                 </div>

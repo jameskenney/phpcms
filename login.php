@@ -1,6 +1,6 @@
 <?php
 ob_start();
-
+include "admin/functions.php";
 require_once( __DIR__ . "/admin/head.php" );
 
 if ( isset( $_POST[ 'btn-login' ] ) ) {

@@ -27,7 +27,7 @@ require( '../admin/config.php' );?>
 
 	                if(isset($_GET['p_id'])){
 
-		                $the_post_id = $_GET['p_id'];
+		                $the_post_id = escape($_GET['p_id']);
 
 	                }
 
@@ -37,29 +37,29 @@ require( '../admin/config.php' );?>
 
 	                while($row = mysqli_fetch_assoc($select_posts_by_id)) {
 
-		                $post_id            = $row['post_id'];
-		                $post_author        = $row['post_author'];
-		                $post_title         = $row['post_title'];
-		                $post_category_id   = $row['post_category_id'];
-		                $post_status        = $row['post_status'];
-		                $post_image         = $row['post_image'];
-		                $post_tags          = $row['post_tags'];
-		                $post_content       = $row['post_content'];
-		                $post_comment_count = $row['post_comment_count'];
-		                $post_date          = $row['post_date'];
+		                $post_id            = escape($row['post_id']);
+		                $post_author        = escape($row['post_author']);
+		                $post_title         = escape($row['post_title']);
+		                $post_category_id   = escape($row['post_category_id']);
+		                $post_status        = escape($row['post_status']);
+		                $post_image         = escape($row['post_image']);
+		                $post_tags          = escape($row['post_tags']);
+		                $post_content       = escape($row['post_content']);
+		                $post_comment_count = escape($row['post_comment_count']);
+		                $post_date          = escape($row['post_date']);
 
 	                }
 
 	                if(isset($_POST['update_post'])) {
 
-		                $post_author = $_POST['post_author'];
-		                $post_title = $_POST['post_title'];
-		                $post_category_id = $_POST['post_category'];
-		                $post_status = $_POST['post_status'];
-		                $post_image = $_FILES['image']['name'];
-		                $post_image_temp = $_FILES['image']['tmp_name'];
-		                $post_content = $_POST['post_content'];
-		                $post_tags = $_POST['post_tags'];
+		                $post_author = escape($_POST['post_author']);
+		                $post_title = escape($_POST['post_title']);
+		                $post_category_id = escape($_POST['post_category']);
+		                $post_status = escape($_POST['post_status']);
+		                $post_image = escape($_FILES['image']['name']);
+		                $post_image_temp = escape($_FILES['image']['tmp_name']);
+		                $post_content = escape($_POST['post_content']);
+		                $post_tags = escape($_POST['post_tags']);
 
 		                move_uploaded_file($post_image_temp, "../assets/images/$post_image");
 

@@ -76,3 +76,22 @@ body {
     border-color: #26A195;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(38, 161, 149, 0.6);
 }
+
+
+.bg-success,
+p.bg-success {
+    text-align: center;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
+a.navbar-brand,
+h1 {
+    font-family: 'Permanent Marker', cursive;
+}
+
+a.navbar-brand {
+    font-size: 30px;
+}
