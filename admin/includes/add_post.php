@@ -64,22 +64,18 @@
 
 
         while($row = mysqli_fetch_assoc($select_categories )) {
-        $cat_id = $row['cat_id'];
-        $cat_title = $row['cat_title'];
-            
+        $cat_id = escape($row['cat_id']);
+        $cat_title = escape($row['cat_title']);
             
             echo "<option value='$cat_id'>{$cat_title}</option>";
-         
-            
+
         }
 
 ?>
-           
-        
+
        </select>
       
       </div>
-
 
        <div class="form-group">
        <label for="users">Users</label>
@@ -92,10 +88,9 @@
         
         confirmQuery($select_users);
 
-
         while($row = mysqli_fetch_assoc($select_users)) {
-        $user_id = $row['user_id'];
-        $username = $row['username'];
+        $user_id = escape($row['user_id']);
+        $username = escape($row['username']);
             
             
             echo "<option value='{$username}'>{$username}</option>";

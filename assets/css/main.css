@@ -696,11 +696,6 @@ h3 .login-title {
 }
 
 
-
-
-
-
-
 /* Button to match style guide */
 
 .btn-entice {
@@ -794,11 +789,9 @@ h3 .login-title {
    width: 100%;
 }
 
-
-
-
-
-
+.center_page_content {
+   padding-top: 25px;
+}
 
 /* Rules for sizing the icon. */
 .material-icons.md-18 { font-size: 18px; }
@@ -813,3 +806,18 @@ h3 .login-title {
 /* Rules for using icons as white on a dark background. */
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+
+p {
+   font-family: 'Roboto', sans-serif;
+}
+
+
+h1 {
+   font-family: 'Permanent Marker', cursive;
+}
+
+a.navbar-brand {
+   font-family: 'Permanent Marker', cursive;
+   font-size: 30px;
+}

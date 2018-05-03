@@ -1,7 +1,7 @@
 <?php
 
     if(isset($_GET['p_id'])){
-    
+
     $the_post_id =  escape($_GET['p_id']);
 
     }
@@ -10,15 +10,15 @@
     $select_posts_by_id = mysqli_query($connection,$query);  
 
     while($row = mysqli_fetch_assoc($select_posts_by_id)) {
-        $post_id            = $row['post_id'];
-        $post_title         = $row['post_title'];
-        $post_category_id   = $row['post_category_id'];
-        $post_status        = $row['post_status'];
-        $post_image         = $row['post_image'];
-        $post_content       = $row['post_content'];
-        $post_tags          = $row['post_tags'];
-        $post_comment_count = $row['post_comment_count'];
-        $post_date          = $row['post_date'];
+        $post_id            = escape($row['post_id']);
+        $post_title         = escape($row['post_title']);
+        $post_category_id   = escape($row['post_category_id']);
+        $post_status        = escape($row['post_status']);
+        $post_image         = escape($row['post_image']);
+        $post_content       = escape($row['post_content']);
+        $post_tags          = escape($row['post_tags']);
+        $post_comment_count = escape($row['post_comment_count']);
+        $post_date          = escape($row['post_date']);
         
          }
 
@@ -69,9 +69,6 @@
         
         echo "<p class='bg-success'>Post Updated. <a href='../post.php?p_id={$the_post_id}'>View Post </a> or <a href='posts.php'>Edit More Posts</a></p>";
 
-
-
-
     }
 
 
@@ -119,15 +116,11 @@
         }
 
 ?>
-
-
        </select>
-
-      </div>
-
+           </div>
         <div class="form-group">
-       <label for="users">Users</label>
-       <select name="post_user" id="">
+            <label for="users">Users</label>
+            <select name="post_user" id="">
 
 
 <?php echo "<option value='{$post_user}'>{$post_user}</option>"; ?>
@@ -141,8 +134,8 @@
 
 
         while($row = mysqli_fetch_assoc($select_users)) {
-        $user_id = $row['user_id'];
-        $username = $row['username'];
+        $user_id = escape($row['user_id']);
+        $username = escape($row['username']);
 
 
             echo "<option value='{$username}'>{$username}</option>";
@@ -152,12 +145,8 @@
 
 ?>
 
-
        </select>
-
       </div>
-
-
 
     <!--   <div class="form-group">
          <label for="title">Post Author</label>
@@ -167,7 +156,7 @@
        <div class="form-group">
       <select name="post_status" id="">
           
-<option value='<?php echo $post_status ?>'><?php echo $post_status; ?></option>
+<option value='<?php echo $post_status; ?>'><?php echo $post_status; ?></option>
           
           <?php
           
@@ -181,15 +170,11 @@
           
           
     echo "<option value='published'>Publish</option>";
-          
-          
+
           }
-              
-              
-              
+
         ?>
-          
-          
+
       </select>
         </div>
 
@@ -201,18 +186,16 @@
 
       <div class="form-group">
          <label for="post_tags">Post Tags</label>
-          <input value="<?php echo $post_tags; ?>"  type="text" class="form-control" name="post_tags">
+          <input value="<?php echo stripslashes($post_tags); ?>"  type="text" class="form-control" name="post_tags">
       </div>
       
       <div class="form-group">
          <label for="post_content">Post Content</label>
-         <textarea  class="form-control "name="post_content" id="" cols="30" rows="10"><?php echo $post_content; ?>
+         <textarea  class="form-control "name="post_content" id="" cols="30" rows="10"><?php echo stripslashes($post_content); ?>
          
         
          </textarea>
       </div>
-      
-      
 
        <div class="form-group">
           <input class="btn btn-primary" type="submit" name="update_post" value="Update Post">
