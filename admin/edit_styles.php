@@ -14,8 +14,8 @@ $query = "SELECT * FROM fp_styles";
 $select_fp_styles = mysqli_query($connection,$query);
 
 while($row = mysqli_fetch_assoc($select_fp_styles)) {
-	$admin_bar_color            = $row['admin_bar_color'];
-	$body_background_color          = $row['body_background_color'];
+	$admin_bar_color            = escape($row['admin_bar_color']);
+	$body_background_color          = escape($row['body_background_color']);
 
 }
 
@@ -56,14 +56,16 @@ if(isset($_POST['update_styles'])) {
                             Editing Front Page Styles
                         </h1>
 
+                        <p>Input supports color names (red, blue, green, etc.) or hex values. Don't forget to use the hash tag with hex values. </p>
+
                         <div class="form-group">
                             <label for="title">Admin Bar Color</label>
-                            <input value="<?php echo htmlspecialchars(stripslashes($admin_bar_color)); ?>"  type="text" class="form-control" name="admin_bar_color">
+                            <input value="<?php echo stripslashes($admin_bar_color); ?>"  type="text" class="form-control" name="admin_bar_color">
                         </div>
 
                         <div class="form-group">
                             <label for="title">Body Background Color</label>
-                            <input value="<?php echo htmlspecialchars(stripslashes($body_background_color)); ?>"  type="text" class="form-control" name="body_background_color">
+                            <input value="<?php echo stripslashes($body_background_color); ?>"  type="text" class="form-control" name="body_background_color">
                         </div>
 
 

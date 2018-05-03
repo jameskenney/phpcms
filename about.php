@@ -15,8 +15,8 @@ $query = "SELECT * FROM about_page";
 $select_about_page = mysqli_query($connection,$query);
 
 while($row = mysqli_fetch_assoc($select_about_page)) {
-	$about_page_title            = $row['about_title'];
-	$about_page_content          = $row['about_content'];
+	$about_page_title            = escape($row['about_title']);
+	$about_page_content          = escape($row['about_content']);
 
 }
 
@@ -29,10 +29,10 @@ while($row = mysqli_fetch_assoc($select_about_page)) {
         <div class="row">
             <div class="col-md-12">
 	            <h1>
-		            <?php echo $about_page_title ?>
+		            <?php echo stripslashes($about_page_title); ?>
                 </h1>
 	            <p>
-		          <?php echo $about_page_content ?>
+		            <?php echo stripslashes($about_page_content); ?>
 	            </p>
             </div>
         </div>

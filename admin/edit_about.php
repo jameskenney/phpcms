@@ -13,8 +13,8 @@ $query = "SELECT * FROM about_page";
 $select_about_page = mysqli_query($connection,$query);
 
 while($row = mysqli_fetch_assoc($select_about_page)) {
-	$about_page_title            = $row['about_title'];
-	$about_page_content          = $row['about_content'];
+	$about_page_title            = escape($row['about_title']);
+	$about_page_content          = escape($row['about_content']);
 
 }
 
@@ -56,7 +56,7 @@ if(isset($_POST['update_about'])) {
 
                         <div class="form-group">
                             <label for="title">Title</label>
-                            <input value="<?php echo htmlspecialchars(stripslashes($about_page_title)); ?>"  type="text" class="form-control" name="about_title">
+                            <input value="<?php echo stripslashes($about_page_title); ?>"  type="text" class="form-control" name="about_title">
                         </div>
 
                         <div class="form-group">

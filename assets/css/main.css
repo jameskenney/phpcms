@@ -807,3 +807,17 @@ h3 .login-title {
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 
+
+p {
+   font-family: 'Roboto', sans-serif;
+}
+
+
+h1 {
+   font-family: 'Permanent Marker', cursive;
+}
+
+a.navbar-brand {
+   font-family: 'Permanent Marker', cursive;
+   font-size: 30px;
+}

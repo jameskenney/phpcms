@@ -8,7 +8,6 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-
                             <small>
 <!--                                --><?php //
 //
@@ -24,8 +23,6 @@
                     </div>
                 </div><!-- /.row -->
 
-                
-                
     <?php 
     $query = "SELECT * FROM posts WHERE post_status = 'published' ";
     $select_all_published_posts = mysqli_query($connection,$query);
@@ -39,10 +36,8 @@
     $select_all_subscribers = mysqli_query($connection,$query);
     $subscriber_count = mysqli_num_rows($select_all_subscribers);
     ?>
-<!--                <div class="row">-->
-<!--                    <div id="columnchart_material" style="width: 'auto'; height: 500px;"></div>-->
-<!--                </div>-->
-            </div><!-- /.container-fluid -->
+
+            </div>
         </div>
 
     <?php include "includes/admin_footer.php" ?>

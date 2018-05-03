@@ -41,6 +41,8 @@ function checkIfUserIsLoggedInAndRedirect($redirectLocation=null){
 
 }
 
+// Added security to escape inputs
+
 function escape($string) {
 
 global $connection;

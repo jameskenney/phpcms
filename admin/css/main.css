@@ -82,3 +82,16 @@ body {
 p.bg-success {
     text-align: center;
 }
+
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
+a.navbar-brand,
+h1 {
+    font-family: 'Permanent Marker', cursive;
+}
+
+a.navbar-brand {
+    font-size: 30px;
+}
