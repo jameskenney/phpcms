@@ -67,3 +67,12 @@ assets/vendor/delight-im
 .editorconfig
 .gitattributes
 
+
+includes/db\.php
+
+# Config/DB files
+######################
+admin/db.php
+includes/db.php
+
+admin/includes/db\.php

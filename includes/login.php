@@ -9,14 +9,15 @@
 <?php
 
 include "../admin/db.php";
+include "../admin/functions.php";
 session_start();
 
 //The login feature pushes its info to POST on this page
 
 if(isset($_POST['login'])) { //$_POST['login'] grabs it and then stores the info in two variables
 
-	$username = escape($_POST['username']);
-	$password = escape($_POST['user_password']);
+	$username = $_POST['username'];
+	$password = $_POST['user_password'];
 
 
 	$username = mysqli_real_escape_string( $connection, $username ); //Sanitizing $username to prevent sql injections.
