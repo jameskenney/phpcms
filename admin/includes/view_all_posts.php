@@ -37,16 +37,16 @@ if(isset($_POST['checkBoxArray'])) {
                         $post_title         = $row['post_title'];
                         $post_category_id   = $row['post_category_id'];
                         $post_date          = $row['post_date'];
-                        $post_author        = $row['post_author'];
+//                        $post_author        = $row['post_author'];
                         $post_status        = $row['post_status'];
                         $post_image         = $row['post_image'] ;
                         $post_tags          = $row['post_tags'];
                         $post_content       = $row['post_content'];
                         }
 
-                        $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date,post_image,post_content,post_tags,post_status) ";
+                        $query = "INSERT INTO posts(post_category_id, post_title, post_date,post_image,post_content,post_tags,post_status) ";
 
-                        $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_status}') ";
+                        $query .= "VALUES({$post_category_id},'{$post_title}',now(),'{$post_image}','{$post_content}','{$post_tags}', '{$post_status}') ";
 
                         $copy_query = mysqli_query($connection, $query);
 
@@ -104,7 +104,7 @@ if(isset($_POST['checkBoxArray'])) {
 
     while($row = mysqli_fetch_assoc($select_posts )) {
         $post_id            = escape($row['post_id']);
-        $post_author        = escape($row['post_author']);
+//        $post_author        = escape($row['post_author']);
         $post_title         = escape($row['post_title']);
         $post_category_id   = escape($row['post_category_id']);
         $post_status        = escape($row['post_status']);
@@ -122,11 +122,11 @@ if(isset($_POST['checkBoxArray'])) {
      
         echo "<td>$post_id </td>";
 
-        if(!empty($post_author)) {
-
-             echo "<td>$post_author</td>";
-
-        }
+//        if(!empty($post_author)) {
+//
+//             echo "<td>$post_author</td>";
+//
+//        }
 
         echo "<td>$post_title</td>";
 
@@ -163,12 +163,17 @@ if(isset($_POST['checkBoxArray'])) {
         </form>
 
         <?php
-//         echo "<td><a rel='$post_id' href='javascript:void(0)' class='delete_link'>Delete</a></td>";
-//         echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete'); \" href='posts.php?delete={$post_id}'>Delete</a></td>";
-//         echo "<td><a href='posts.php?reset={$post_id}'>{$post_views_count}</a></td>";
-         echo "</tr>";
+         //echo "<td><a rel='$post_id' href='javascript:void(0)' class='delete_link'>Delete</a></td>";
+         //echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete'); \" href='posts.php?delete={$post_id}'>Delete</a></td>";
+         //echo "<td><a href='posts.php?reset={$post_id}'</a></td>";
+         //echo "</tr>";
         }
         ?>
+
+
+
+
+
                       </tbody>
 </table>
 </form>

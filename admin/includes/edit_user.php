@@ -29,30 +29,40 @@ if(isset($_GET['edit_user'])){
             $user_firstname   = escape($_POST['user_firstname']);
             $user_lastname    = escape($_POST['user_lastname']);
             $user_role        = escape($_POST['user_role']);
-    
-           // $post_image = $_FILES['image']['name'];
-           // $post_image_temp = $_FILES['image']['tmp_name'];
+
+            // move_upload_file($post_image_temp
 
             $username      = escape($_POST['username']);
             $user_email    = escape($_POST['user_email']);
             $user_password = escape($_POST['user_password']);
-            $post_date     = escape(date('d-m-y'));
-
-        if(!empty($user_password)) {
-          $query_password = "SELECT user_password FROM users_new WHERE user_id =  $the_user_id";
-          $get_user_query = mysqli_query($connection, $query_password);
-          confirmQuery($get_user_query);
-
-          $row = mysqli_fetch_array($get_user_query);
-
-          $db_user_password = escape($row['user_password']);
+//            $post_date     = escape(date('d-m-y'));
 
 
-        if($db_user_password != $user_password) {
+            $query = "SELECT randSalt FROM users_new";
+            $select_users_query = mysqli_query($connection, $query);
+            if(!$select_users_query){
+                die("Query Failed" . mysqli_error($connection));
+            }
 
-            $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
+            $row = mysqli_fetch_array($select_users_query);
+            $salt = $row['randSalt'];
+            $hashed_password = crypt($user_password, $salt);
 
-          }
+//        if(!empty($user_password)) {
+//          $query_password = "SELECT user_password FROM users_new WHERE user_id =  $the_user_id";
+//          $get_user_query = mysqli_query($connection, $query_password);
+//          confirmQuery($get_user_query);
+//
+//          $row = mysqli_fetch_array($get_user_query);
+//
+//          $db_user_password = escape($row['user_password']);
+//
+//
+//        if($db_user_password != $user_password) {
+//
+//            $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
+//
+//          }
 
           $query = "UPDATE users_new SET ";
           $query .= "user_firstname  = '{$user_firstname}', ";
@@ -68,7 +78,6 @@ if(isset($_GET['edit_user'])){
 
           echo "User Updated" . " <a href='users.php'>View Users?</a>";
 
-        }  // if password empty check end
         } // Post reques to update user end
 
 } else {  // If the user id is not present in the URL we redirect to the home page

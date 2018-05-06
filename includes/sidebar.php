@@ -24,6 +24,9 @@
                 <button class="btn btn-entice" name="login" type="submit">Submit</button>
             </span>
         </div>
+        <div>
+            <a class="" href="registration.php">Register <span class="sr-only"></span></a>
+        </div>
 
     </form><!--search form-->
     <!-- /.input-group -->

@@ -5,9 +5,7 @@
  * Date: 4/25/2018
  * Time: 11:24 PM
  */
-?>
-<?php
-
+include "../admin/functions.php";
 include "../admin/db.php";
 include "../admin/functions.php";
 session_start();
@@ -18,7 +16,6 @@ if(isset($_POST['login'])) { //$_POST['login'] grabs it and then stores the info
 
 	$username = $_POST['username'];
 	$password = $_POST['user_password'];
-
 
 	$username = mysqli_real_escape_string( $connection, $username ); //Sanitizing $username to prevent sql injections.
 	$password = mysqli_real_escape_string( $connection, $password ); //Sanitizing $password to prevent sql injections.
@@ -31,9 +28,7 @@ if(isset($_POST['login'])) { //$_POST['login'] grabs it and then stores the info
 
 	}
 
-	while ( $row = mysqli_fetch_array( $select_user_query ) ) {
-
-//	Take the result from $select_user_query and assigns it to the variable $row and loops through it
+	while ( $row = mysqli_fetch_array( $select_user_query ) ) {//	Take the result from $select_user_query and assigns it to the variable $row and loops through it
 
 		$db_user_id        = escape($row['user_id']);
 		$db_username       = escape($row['username']);
@@ -43,23 +38,23 @@ if(isset($_POST['login'])) { //$_POST['login'] grabs it and then stores the info
 		$db_user_role       = escape($row['user_role']);
 	}
 
-	if( $username !== $db_username && $password !== $db_user_password ) {
+	//$password = crypt($password, $db_user_password);
 
-		header( "Location: ../index.php" );
+	//if( password_verify($password, $db_user_password) ) {
 
-	} else if( $username == $db_username && $password == $db_user_password ){
-// Assign from right to left
-		$_SESSION['username'] = $db_username;
+	if( password_verify( $password, $db_user_password ) ){
+
+		$_SESSION['username'] = $db_username; // Note: You assign these variables from right to left
 		$_SESSION['firstname'] = $db_user_firstname;
 		$_SESSION['lastname'] = $db_user_lastname;
 		$_SESSION['user_role'] = $db_user_role;
 
-
 		header( "Location: ../admin" );
 
-
 	} else {
+
 		header("Location: ../index.php");
+
 	}
 
 }
